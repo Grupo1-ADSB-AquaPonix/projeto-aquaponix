@@ -19,3 +19,28 @@ Ao fazer parte de nossa equipe é preciso se atentar as regras estabelecidas por
   <li>A Sprint do grupo terá duração de 7 dias, tendo seu fim na reunião de Sprint Review nas quintas feiras.</li>
   <li>Haverá uma rotatividade semanal na apresentação das reuniões de Review para o Professor.</li>
 </ul>
+
+## Padronização de Commits
+
+Na hora de fazer o commit para este repositório, você deve seguir à essas regras de padronização:
+
+``Refatoramento: 'Ajustes do codigo de alguma parte do projeto'``
+> Para commits aonde o desenvolvedor irá incrementar/remover alguma parte do código
+
+``Implementação: 'Método ainda não implementado no sistema'``
+> Utilizado quando o desenvolvedor for fazer a implementação de uma nova funcionalidade no projeto
+
+``Remoção: 'Exclusão de algum arquivo do sistema``
+> Deve-se usar está estrutura quando você subir uma alteração no repositório que implique diretamente na remoção de algum arquivo
+
+Caso em seu diretorio local exista mais de uma atualizacao que se encaixe em diferentes tipos de commit, haverá a necessidade de subir um commit por vez.
+
+### Exemplo
+
+Diretório do arquivo do projeto na minha máquina local
+
+`` git add /projeto/home/index.html `` 
+> Caso você queira enviar apenas um arquivo de uma pasta em especifico
+
+`` git add /projeto/home/ . ``
+> Caso você queira enviar todos os arquivos de uma pasta em especifico

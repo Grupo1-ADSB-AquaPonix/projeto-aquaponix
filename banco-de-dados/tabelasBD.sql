@@ -11,16 +11,17 @@ create table usuario (
 );
 
 create table sensorTemperatura (
-    idSensor int primary key auto_increment,
+    idSensorTemperatura int primary key auto_increment,
     fkTanque int,
-    fkHorta int,
-    temperaturaColetada varchar(10) -- perguntar qual seria o tipo ideal
+    temperaturaColetada varchar(10), -- perguntar qual seria o tipo ideal
+    dtColeta datetime default current_timestamp
 );
 
 create table sensorLuminosidade (
-    idSensor int primary key auto_increment,
+    idSensorLuminosidade int primary key auto_increment,
     fkHorta int not null,
-    luminosidadeColetada varchar(10) -- perguntar qual seria o tipo ideal
+    luminosidadeColetada varchar(10), -- perguntar qual seria o tipo ideal
+    dtColeta datetime default current_timestamp
 );
 
 create table tanque (
@@ -34,9 +35,9 @@ create table horta (
 	idHorta int primary key auto_increment,
 	nomeVegetal varchar(40),
     qtdPes int,
-	fkSensorLuminosidade int,	
-	fkSensorTemperatura int	
+	fkSensorLuminosidade int
 );
+
 insert into usuario values
 (default, 'Ronaldo', 'ronaldo.fenomeno@gmail.com', '774.874.574-15', '11-955419758', 'ronaldo123'),
 (default, 'Adalberto', 'adalberto.beto@gmail.com', '125.351.241-16', '11-925621262', 'betinho125'),

@@ -3,6 +3,8 @@
 body {
     font-family: monospace; /* FONTE GLOBAL */
     background-image: url(imagem/fundo.jpg); /* PLANO DE FUNDO - BACKGROUND */
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -41,7 +43,7 @@ body {
     flex-direction: column; /* DIRECIONAMENTO DA DIV */
     border: 1px solid black; /* BORDAR DA DIV */
     border-radius: 20px; /* ARREDONDAMENTO DA BORDA */
-    background-color: white; /* COR DA DIV - BACKGROUND */
+    background-color: rgb(255, 255, 255); /* COR DA DIV - BACKGROUND */
 }
 
 h1 {

@@ -22,6 +22,7 @@
             <div id="div_info" class="info">
 
                 <h1>Informações sobre o Calculo</h1>
+
     
                 <p>
                     Os cálculos foram baseados na quantidade de plantas, consumo de água por planta inserida.
@@ -96,7 +97,7 @@
 
         mensagem.innerHTML = `
         <div class="msg">
-            <h2>Sistema Tradicional</h2>
+            <h2>Sistema Tradicional</h2> 
             <p>Água: <span class="maior">${litros_tradicional}</span> litros</p>
             <p>Metro cúbico: <span class="maior">${cubico_tradicional}</span> m³</p>
             <p>Gasto: <span class="maior">${tradicional_formatado}</span></p>
@@ -117,7 +118,7 @@
         <p>Água Economizada: <span class="menor">${economia_agua}</span> litros</p>
         <p>Economia: <span class="menor">${economia_formatado}</span></p> 
         `;
-        div_info.innerHTML = ""; 
+        div_info.innerHTML = `<span class="mensagem2"></span>` 
 
     }
 

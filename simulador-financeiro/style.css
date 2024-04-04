@@ -2,7 +2,7 @@
 
 body {
     font-family: monospace; /* FONTE GLOBAL */
-    background-image: url(images/background.jpg); /* PLANO DE FUNDO - BACKGROUND */
+    background-image: url(imagem/fundo.jpg); /* PLANO DE FUNDO - BACKGROUND */
 }
 
 
@@ -21,8 +21,6 @@ body {
 .info {
     width: 350px; /* LARGURA DA DIV */
     padding: 20px; /* ALTURA DA DIV */
-    border: 1px solid black; /* BORDAR DA DIV */
-    border-radius: 15px; /* ARREDONDAMENTO DA BORDA */
     background-color: white;  /* COR DA DIV - BACKGROUND */
 }
 
@@ -35,7 +33,7 @@ body {
 
 .content {
     width: 400px; /* LARGURA DA DIV */
-    height: 1000px; /* ALTURA DA DIV */
+    height: 840px; /* ALTURA DA DIV */
     margin: 30px 0px; /* ESPAÇAMENTO EXTERNO - AUTO ALINHAMENTO */
     padding: 10px 60px; /* ESPAÇAMENTO INTERNO - Ypx Xpx */
     gap: 10px; /* ESPAÇAMENTO ENTRE OS ITENS DENTRO DA DIV */
@@ -117,3 +115,6 @@ h2 {
     color: green; /* COR PERSONALIZADA PARA VALORES DO SISTEMA AQUAPÔNICO */
 }
 
+.mensagem2 {
+    display: none;
+}

@@ -10,29 +10,18 @@
     <!-- TITLE -->
     <title>Simulador Financeiro</title>
 </head>
-
 <body>
-
     <div class="container">
-
         <div class="content">
-
             <h1>Quanto você pode economizar com o Sistema Aquapônico?</h1>
-
             <div id="div_info" class="info">
-
                 <h1>Informações sobre o Calculo</h1>
-
-    
                 <p>
                     Os cálculos foram baseados na quantidade de plantas, consumo de água por planta inserida.
                     A informação crucial é o total de consumo de água, o qual será convertido de litros para metros cúbicos
                     para determinar o seu custo, com base nas tarifas fornecidas pela Sabesp (R$8,75 por metro cúbico).
                 </p>
-                
-    
             </div>
-
             <p>Quantidade de plantas</p>
             <input type="number" id="input_quantPlantas">
 
@@ -43,17 +32,9 @@
 
             <div id="mensagem"></div>
             <div id="economia"></div>
-
-            
-
         </div>
-
-        
-
     </div>
-
 </body>
-
 </html>
 
 <script>
@@ -72,7 +53,7 @@
 
         var gasto_tradicional = cubico_tradicional * 8.75;
 
-        var tradicional_formatado = gasto_tradicional.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        var tradicional_formatado = gasto_tradicional.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
 
         // CALCULO - AQUAPONIA
@@ -85,15 +66,16 @@
 
         var gasto_aquaponia = cubico_aquaponia * 8.75;
 
-        var aquaponia_formatado = gasto_aquaponia.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        var aquaponia_formatado = gasto_aquaponia.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
 
         //CALCULO - ECONOMIA
 
         var valor_economia = gasto_tradicional - gasto_aquaponia;
 
-        var economia_formatado = valor_economia.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        var economia_formatado = valor_economia.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+        div_info.style = "display:none;" 
 
         mensagem.innerHTML = `
         <div class="msg">
@@ -117,7 +99,6 @@
         <p>Água Economizada: <span class="menor">${economia_agua}</span> litros</p>
         <p>Economia: <span class="menor">${economia_formatado}</span></p> 
         `;
-        div_info.innerHTML = `<span class="mensagem2"></span>` 
 
     }
 

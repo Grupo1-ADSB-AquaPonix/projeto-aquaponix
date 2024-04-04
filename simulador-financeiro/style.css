@@ -24,6 +24,9 @@ body {
     width: 350px; /* LARGURA DA DIV */
     padding: 20px; /* ALTURA DA DIV */
     background-color: white;  /* COR DA DIV - BACKGROUND */
+    border: 1px solid black; /* BORDAR DA DIV */
+    border-radius: 20px; /* ARREDONDAMENTO DA BORDA */
+    
 }
 
 .info p{
@@ -35,7 +38,7 @@ body {
 
 .content {
     width: 400px; /* LARGURA DA DIV */
-    height: 840px; /* ALTURA DA DIV */
+    height: 725px; /* ALTURA DA DIV */
     margin: 30px 0px; /* ESPAÇAMENTO EXTERNO - AUTO ALINHAMENTO */
     padding: 10px 60px; /* ESPAÇAMENTO INTERNO - Ypx Xpx */
     gap: 10px; /* ESPAÇAMENTO ENTRE OS ITENS DENTRO DA DIV */
@@ -121,3 +124,4 @@ h2 {
 .mensagem2 {
     display: none;
 }
+

@@ -7,12 +7,12 @@ create table usuario (
     email varchar(70) not null unique,
     cpf varchar(14) not null unique,
     telefone varchar(16) not null,
-    senha varchar(40)
+    senha varchar(40) not null
 );
 
 create table sensorTemperatura (
     idSensorTemperatura int primary key auto_increment,
-    fkTanque int,
+    fkTanque int not null,
     temperaturaColetada varchar(10), -- perguntar qual seria o tipo ideal
     dtColeta datetime default current_timestamp
 );
@@ -27,15 +27,13 @@ create table sensorLuminosidade (
 create table tanque (
     idTanque int primary key auto_increment,
     qtdLitros int,
-    qtdPeixes int,
-    fkSensorTemperatura int
+    qtdPeixes int
 );
 
 create table horta (
 	idHorta int primary key auto_increment,
 	nomeVegetal varchar(40),
-    qtdPes int,
-	fkSensorLuminosidade int
+    qtdPlantada int
 );
 
 insert into usuario values
@@ -44,19 +42,25 @@ insert into usuario values
 (default, 'Marcos', 'marcao777@gmail.com', '541.635.825-12', '11-974875223', 'marcasso78');
 
 insert into sensorTemperatura values
-(default, 1, null, '26.3'),
-(default, 3, null, '22.4'),
-(default, null, 1, '26.5');
+(default, 1, '26.3', default),
+(default, 2, '22.4', '2024-04-05 12:28:00');
 
 insert into sensorLuminosidade values 
-(default, 1, '320'),
-(default, 2, '460'),
-(default, 3, '690');
+(default, 1, '320', default),
+(default, 2, '460', '2024-04-05 12:25:00'),
+(default, 3, '690', '2024-04-05 13:25:00');
 
 insert into tanque values
-(default, 1000, 25, 1), 
-(default, 1000, 27, 2);
+(default, 1000, 25), 
+(default, 1000, 27);
 
 insert into horta values
-(default, 'Alface', 10, 1, 3),
-(default, 'Couve', 10, 2, 3);
+(default, 'Alface', 10),
+(default, 'Couve', 10),
+(default, 'Quiabo', 10);
+
+select * from usuario;
+select * from horta;
+select * from tanque;
+select * from sensorTemperatura;
+select * from sensorLuminosidade;

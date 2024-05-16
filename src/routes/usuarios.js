@@ -12,4 +12,8 @@ router.post("/cadastrar", (req, res) => {
     usuarioController.cadastrar(req, res);
 })
 
+router.post("/cadastrarFuncionario", (req, res) => {
+    usuarioController.cadastrarFuncionario(req, res);
+})
+
 module.exports = router;

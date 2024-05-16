@@ -70,8 +70,41 @@ const cadastrar = async (req, res) => {
     }
 }
 
+const cadastrarFuncionario = async (req, res) => {
+
+    const nome = req.body.nomeFuncionario;
+    const email = req.body.emailFuncionario;
+    const telefone = req.body.telefoneFuncionario;
+    const senha = req.body.senhaFuncionario;
+
+
+    const cnpjEmpresa = await usuarioModel.buscarEmpresa(cnpj).then((empresa) => {
+        return empresa[0]
+    })
+
+    if (nome == '' || email == '' || telefone == '' || senha == '') {
+        res.status(400).send('Preencha todos os campos para continuar')
+    } else if(email.indexOf('@') == -1){
+        res.status(400).send("Este Email é inválido")
+    } else if (senha.length < 6){
+        res.status(400).send("Senha precisa conter no minimo 6 caracteres")
+    } else{
+        
+        await enderecoModel.inserirEndereco(cep, numero, complemento);
+        const getLastId = await enderecoModel.ultimoRegistro().then((data) => {
+            return data[0];
+        })
+
+        await usuarioModel.inserirEmpresa(razaoSocial, cnpj, telefone1, telefone2, senha, getLastId.idEndereco).then((data) => {
+            res.status(203).json(data);
+        })
+    }
+}
+
+
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    cadastrarFuncionario
 }

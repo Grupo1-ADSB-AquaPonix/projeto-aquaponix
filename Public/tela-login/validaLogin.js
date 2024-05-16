@@ -2,9 +2,6 @@ async function validaLogin() {
     var email = document.getElementById('input_email').value;
     var senha = document.getElementById('input_senha').value;
 
-    // if((email.indexOf('@') == -1 || email.indexOf(".") == -1) || senha.length < 6){
-    //     alert('Email ou senha incorretos')
-    // }
     if(email == "" || senha == ""){
         alert('Preencha todos os campos para continuar')
     }
@@ -28,9 +25,9 @@ async function validaLogin() {
                     console.log(data)
                 })
 
-                // setTimeout(() => {
-                //     window.location.href = ('../dashboard/painel.html')
-                // }, 3000)
+                setTimeout(() => {
+                    window.location.href = ('../dashboardTanque/dashboardTanque.html')
+                }, 2000)
             } else{
                 res.text().then((err) => {
                     console.error(err);

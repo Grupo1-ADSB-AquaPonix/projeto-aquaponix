@@ -40,6 +40,9 @@
                 <h2 id="div_title">Cadastro Empresarial</h2>
             </div>
             <div class="box-form" id="div_form">
+                <select name="empresas" id="listaEmpresas" required>
+                    <option selected>Selecione sua empresa</option>
+                </select>
                 <input type="text" id="input_nomeEmpresa" placeholder="* Razão Social">
                 <input type="text" id="input_cnpj" placeholder="* CNPJ">
                 <input type="text" id="input_telefone1" placeholder="* Telefone Fixo ou Celular">
@@ -59,7 +62,7 @@
                 <input type="text" id="input_complemento" placeholder="* Complemento">
                 <div class="botoes">
                     <button class="btn-voltar" onclick="voltar()">Voltar</button>
-                    <button class="btn-criarconta" onclick="Cadastrar()">Criar Conta</button>
+                    <button class="btn-criarconta" onclick="cadastrar()">Criar Conta</button>
                 </div>
             </div>
         </div>

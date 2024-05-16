@@ -1,5 +1,5 @@
-function Cadastrar() {
-    
+function cadastrar() {
+
     var razaoSocial = document.getElementById('input_nomeEmpresa').value;
     var cnpj = document.getElementById('input_cnpj').value;
     var telefone1 = document.getElementById('input_telefone1').value;
@@ -34,7 +34,7 @@ function Cadastrar() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                razaoSocialEmpresa: razaoSocial, 
+                razaoSocialEmpresa: razaoSocial,
                 cnpjEmpresa: cnpj,
                 telefone1Empresa: telefone1,
                 telefone2Empresa: telefone2,
@@ -45,11 +45,11 @@ function Cadastrar() {
             })
         }).then((res) => {
 
-            if(res.ok){
+            if (res.ok) {
                 res.json().then((data) => {
                     console.log(data);
                 })
-            } else{
+            } else {
                 res.text().then((err) => {
                     console.error(err);
                 })
@@ -58,8 +58,8 @@ function Cadastrar() {
     }
 }
 
-function validaFuncionario() {
-    var nomeFuncionario = document.getElementById('input_nomeFuncionario').value;
+function cadastrarFuncionario() {
+    var nome = document.getElementById('input_nome').value;
     var email = document.getElementById('input_email').value;
     var telefone = document.getElementById('input_telefone').value;
     var senha = document.getElementById('input_senha').value;
@@ -72,9 +72,9 @@ function validaFuncionario() {
         }
     }
 
-    if (nomeFuncionario == '' || email == '' || telefone == '' || senha == '' || confirmSenha == '') {
+    if (nome == '' || email == '' || telefone == '' || senha == '' || confirmSenha == '') {
         alert('Complete todos os campos obrigatórios');
-    } else if (nomeFuncionario.length < 1) {
+    } else if (nome.length < 1) {
         alert('Nome Inválido');
     } else if (contArroba > 1) {
         alert('O email só pode ter um @');
@@ -89,7 +89,29 @@ function validaFuncionario() {
     } else if (confirmSenha !== senha) {
         alert('As senhas não coincidem');
     } else {
-        alert("Cadastro realizado!");
-        window.location.href = ('../dashboard/painel.html');
+
+        fetch("/usuarios/cadastrar", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeFuncionario: nome,
+                emailFuncionario: email,
+                telefoneFuncionario: telefone,
+                senhaFuncionario: senha
+            })
+        }).then((res) => {
+
+            if (res.ok) {
+                res.json().then((data) => {
+                    console.log(data);
+                })
+            } else {
+                res.text().then((err) => {
+                    console.error(err);
+                })
+            }
+        })
     }
 }

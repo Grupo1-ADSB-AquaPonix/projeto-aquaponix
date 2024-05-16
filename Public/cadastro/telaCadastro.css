@@ -51,7 +51,7 @@ article {
     align-items: center;
 }
 
-.box-form input {
+.box-form input{
     height: 40px;
     width: 80%;
     padding-left: 2%;
@@ -60,6 +60,16 @@ article {
     background-color: white;
     border: 2px solid black;
 }
+
+.box-form select{
+    height: 40px;
+    width: 83%;
+    padding-left: 2%;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid black;
+} 
 
 .box-form-endereco input {
     height: 40px;

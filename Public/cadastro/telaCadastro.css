@@ -1,0 +1,134 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Montserrat Alternates", sans-serif;
+}
+
+article {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: url('../assets/horta-piscina.png');
+}
+
+#links {
+    width: 20%;
+}
+
+#links2 {
+    width: 75%;
+}
+
+.container-cadastro {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0.9)
+}
+
+.container-endereco {
+    height: 100%;
+    width: 60%;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.9)
+}
+
+.box-form {
+    height: 80%;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box-form input {
+    height: 40px;
+    width: 80%;
+    padding-left: 2%;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.box-form-endereco input {
+    height: 40px;
+    width: 80%;
+    padding-left: 2%;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.box-form-endereco {
+    height: 50%;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botoes {
+    justify-content: center;
+    gap: 20%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.btn-criarconta {
+    height: 50px;
+    width: 200px;
+    cursor: pointer;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    background-color: #026773;
+}
+
+.btn-criarconta:hover {
+    transition: .2s;
+    background-color: #FFF;
+    color: #000;
+    border: 1px solid #026773;
+}
+
+.btn-criarconta:active {
+    transform: scale(1.02);
+}
+
+.btn-voltar {
+    height: 50px;
+    width: 200px;
+    cursor: pointer;
+    border: 1px solid #026773;
+    border-radius: 30px;
+    color: #000;
+    font-size: 16px;
+    background-color: #FFF;
+}
+
+.btn-voltar:hover {
+    transition: .2s;
+    background-color: #026773;
+    color: #FFF;
+    border: 1px solid #fff;
+}
+
+.btn-voltar:active {
+    transition: .2s;
+    transform: scale(1.02);
+}

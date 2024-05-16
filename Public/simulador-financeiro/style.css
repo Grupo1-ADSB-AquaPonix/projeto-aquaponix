@@ -1,0 +1,247 @@
+body {
+    display: contents;
+    width: 100%;
+    height: 100%;
+    font-family: "Montserrat Alternates", sans-serif;
+}
+
+
+/* --------------------CONTAINER-------------------- */
+
+.container {
+    display: flex; /* COMPONENTES DA BODY FLEXIVEIS */
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/fundo.jpg'); /* PLANO DE FUNDO - BACKGROUND */
+}
+
+
+/* --------------------INFO-------------------- */
+
+.info {
+    width: 350px; /* LARGURA DA DIV */
+    padding: 20px; /* ALTURA DA DIV */
+    background-color: white;  /* COR DA DIV - BACKGROUND */
+    border: 1px solid black; /* BORDAR DA DIV */
+    border-radius: 20px; /* ARREDONDAMENTO DA BORDA */
+    
+}
+
+.info p{
+    text-align: justify; /* ALINHAMENTO DO TEXTO */
+    font-size: 15px; /* TAMANHO DO TEXTO p */
+}
+
+/* --------------------CONTENT-------------------- */
+
+.content {
+    width: 400px; /* LARGURA DA DIV */
+    height: 100%; /* ALTURA DA DIV */
+    margin: 30px 0px; /* ESPAÇAMENTO EXTERNO - AUTO ALINHAMENTO */
+    padding: 10px 60px; /* ESPAÇAMENTO INTERNO - Ypx Xpx */
+    gap: 10px; /* ESPAÇAMENTO ENTRE OS ITENS DENTRO DA DIV */
+    display: flex; /* TORNANDO ELEMENTOS FLEXIVEIS */
+    flex-direction: column; /* DIRECIONAMENTO DA DIV */
+    border: 1px solid black; /* BORDAR DA DIV */
+    border-radius: 20px; /* ARREDONDAMENTO DA BORDA */
+    background-color: rgb(255, 255, 255); /* COR DA DIV - BACKGROUND */
+}
+
+h1 {
+    text-align: center; /* ALINHAMENTO DO TEXTO H1 */
+    font-weight: 700; /* INTESIDADE DA FONTE */
+    color: rgb(83, 162, 83); /* COR DO TEXTO H1 */
+}
+
+.content p {
+    font-size: 15px; /* TAMANHO DO TEXTO p */
+    font-weight: 600; /* INTENSIDADE DA FONTE */
+    text-align: center; /* ALINHAMENTO DO TEXTO p */
+}
+
+input {
+    padding: 5px; /* ESPAÇAMENTO INTERNO */
+    border: none; /* SEM BORDAS */
+    outline: none; /* CONTORNO DA INPUT */
+    border-bottom: 1px solid rgb(83, 162, 83); /* DEFININDO BORDA INFERIOR */
+}
+
+button {
+    padding: 10px 50px; /* ESPAÇAMENTO INTERNO Ypx Xpx*/
+    margin: 25px;
+    align-self: center; /* AUTO ALINHAMENTO */
+
+    border: none; /* SEM BORDAS */
+    border-radius: 5px; /* ARREDONDAMENTO DA BORDA */
+
+    font-size: 16px; /* TAMANHO DA FONTE */
+    color: white; /* COR DA FONTE */
+    background-color: rgb(83, 162, 83); /* COR DE FUNDO - BACKGROUND */
+}
+
+#links{
+    width: 30%;
+}   
+
+#links2{
+    width: 75%;
+}
+
+/* --------------------DIV DE RESPOSTA - COMPARAÇÃO-------------------- */
+
+
+#mensagem {
+    width: 100%; /* LARGURA DA DIV */
+    gap: 15px; /* ESPAÇAMENTO ENTRE OS ITENS DENTRO DA DIV */
+    display: flex; /* TORNANDO ELEMENTOS FLEXIVEIS */
+    flex-direction: row; /* DIRECIONAMENTO DA DIV */
+    justify-content: center; /* ALINHAMENTO HORIZONTAL */
+    align-items: center; /* ALINHAMENTO VERTICAL */
+}
+
+#mensagem .msg {
+    width: 50%; /* LARGURA DA DIV */
+}
+
+#economia {
+    width: 100%; /* LARGURA DA DIV */
+}
+
+h2 {
+    border-bottom: 1px solid; /* BORDAR INFERIOR */
+    text-align: center; /* ALINHAMENTO DO TEXTO H2 */
+    font-size: 18px; /* TAMANHO DA FONTE */
+}
+
+#mensagem p, #economia p {
+    font-size: 14px; /* TAMANHO DA FONTE */
+    text-align: center; /* ALINHAMENTO DO TEXTO */
+}
+
+.maior {
+    color: red; /* COR PERSONALIZADA PARA VALORES DO SISTEMA TRADICIONAL */
+}
+
+.menor {
+    color: green; /* COR PERSONALIZADA PARA VALORES DO SISTEMA AQUAPÔNICO */
+}
+
+.msg{
+    margin-left: 5px;
+    border: 1px solid;
+    border-style: inset;
+    border-color: black;
+    border-radius: 20px;
+    width: 50%;
+}
+
+.msg2{
+    border: 1px solid;
+    border-style: inset;
+    border-color: black;
+    border-radius: 20px;
+}
+
+nav{
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #0e420c;
+}
+
+
+a{
+    text-decoration: none;
+
+}
+
+a:visited{
+    color: white;
+}
+
+.logoEmpresa{
+    height: 100%;
+    width: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 18px;
+}
+
+
+.container-links{
+    height: 100%;
+    width: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.links{
+    height: 80%;
+    width: 50%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.links2{
+    height: 80%;
+    width: 30%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.links ul, .links2 ul{
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    color: white;
+}
+
+.links a, .links2 a{
+    color: white;
+    text-decoration: none;
+}
+
+.links a:hover, .links2 a:hover, .logoEmpresa a:hover{
+    color: aqua;
+}
+
+
+footer{
+    height: 70px;
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 20px;
+    background-color: #0e420c;
+}
+
+

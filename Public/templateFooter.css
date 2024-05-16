@@ -1,0 +1,20 @@
+/*
+    <footer>
+        <p>
+            &copy; Aquaponix 2024 Todos os direitos reservados. 
+        </p>
+    </footer>
+*/
+
+footer{
+    height: 70px;
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 20px;
+    background-color: #218692;
+}

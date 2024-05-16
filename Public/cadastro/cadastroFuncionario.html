@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Cadastro</title>
+    <link rel="stylesheet" href="./CadastroFuncionario.css">
+    <link rel="stylesheet" href="../templateNavBar.css">
+    <link rel="stylesheet" href="../templateFooter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav id="navBar" style="position: relative;">
+        <div class="logoEmpresa">
+            <h1><a href="../home.html">AQUAPONIX</a></h1>
+        </div>
+        <div class="container-links" id="container-links">
+            <div class="links2" id="links2">
+                <ul>
+                    <li><ins style="font-weight: bolder; color: black;">Cadastro Funcionário</ins></li>
+                    <li>|</li>
+                    <li><a href="../dashboard/painel.html">DashBoard</a></li>
+                    <li>|</li>
+                    <li><a href="../home.html">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <article>
+        <div class="container-formulario">
+            <div class="box-title">
+                <h2 id="div_title">Cadastro de Funcionário</h2>
+            </div>
+            <div class="box-form" id="div_form">
+                <input type="text" id="input_nomeFuncionario" placeholder="* Nome do Funcionário">
+                <input type="text" id="input_email" placeholder="* E-mail">
+                <input type="text" id="input_telefone" placeholder="* Telefone Celular">
+                <input type="password" id="input_senha" placeholder="* Senha">
+                <input type="password" id="input_confirmSenha" placeholder="* Confirmar senha">
+                <button class="btn-criarconta" onclick="validaFuncionario()">Criar Conta</button>
+        </div>
+    </article>
+    <footer>
+        <span>
+             Aquaponix &copy; 2024 Todos os direitos reservados. 
+        </span>
+    </footer>
+
+    <script src="./validaCadastro.js"></script>
+</body>
+</html>

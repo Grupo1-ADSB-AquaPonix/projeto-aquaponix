@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../templateFooter.css">
+    <link rel="stylesheet" href="../templateNavBar.css">
+    <link rel="stylesheet" href="dashboardTanque.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav id="navBar">
+        <div class="logoEmpresa">
+            <h1><a href="#">AQUAPONIX</a></h1>
+        </div>
+        <div class="container-links" id="links">
+            <div class="links2" id="links2">
+                <ul>
+                    <a href="../cadastro/">
+                        <li>Cadastrar Funcionário</li>
+                    </a>
+                    <li>|</li>
+                    <a href="./cadastro/telaCadastro.html"> 
+                        <li>Dashboard</li>
+                    </a>
+                    <li>|</li>
+                    <a href="#">
+                        <li>Sair</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="box-titulo">
+            <h1>Painel de Monitoramento</h1>
+            <div class="div-title">
+                <div class="div-metricas" style="background-color: blue;">
+                    <h2><img src="../assets/icone-frio.png" height="25em" alt="icone frio"> 24°</h2>
+                    <span>Temperatura Miníma</span>
+                </div>
+                <div class="div-metricas" style="background-color: green;">
+                    <h2>26°</h2>
+                    <span>Temperatura Ideal</span>
+                </div>
+                <div class="div-metricas" style="background-color: red;">
+                    <h2><img src="../assets/icone-calor.png" height="25em" alt="icone calor"> 29°</h2>
+                    <span>Temperatura Máxima</span>
+                </div>
+            </div>
+            <div class="div-title">
+                <div class="div-metricas" style="background-color: #616161;">
+                    <h2>101 Lux</h2>
+                    <span>Luminosidade Miníma</span>
+                </div>
+                <div class="div-metricas" style="background-color: green;">
+                    <h2>250 Lux</h2>
+                    <span>Luminosidade Ideal</span>
+                </div>
+                <div class="div-metricas" style="background-color: orange;">
+                    <h2>400 Lux</h2>
+                    <span>Luminosidade Máxima</span>
+                </div>
+            </div>
+        </div>
+        <div class="box-tanques">
+            <div class="box-buttons">
+                <button>Tanque 1</button>
+                <button>Tanque 2</button>
+                <button>Tanque 3</button>
+                <button>Tanque 4</button>
+                <button>Tanque 5</button>
+            </div>
+        </div>
+        <div class="box-graficos">
+            <div class="especificacoes-grafico">
+                <div class="box-informacoes">
+                    <div class="tanque">
+                        <h4>Tanque 1</h4>
+                    </div>
+                    <div class="extras-tanque">
+                        <span>Quantidade de peixes: 10</span>
+                        <span>Quantidade de litros: 1000</span>
+                    </div>
+                </div>
+                <div class="grafico-linha">
+                    <!-- Gráfico aparece dentro dessa tag -->
+                    <canvas id="graficoLinha"></canvas>
+                </div>
+            </div>
+            <div class="especificacoes-grafico">
+                <div class="box-informacoes">
+                    <div class="tanque">
+                        <h4>Horta 1</h4>
+                    </div>
+                    <div class="extras-tanque">
+                        <span>Planta: Alface</span>
+                        <span>Quantidade plantada: 25</span>
+                    </div>
+                </div>
+                <div class="grafico-linha">
+                    <!-- Gráfico aparece dentro dessa tag -->
+                    <canvas id="graficoLinha2"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="Footer">
+        <p>
+            &copy; Aquaponix 2024 Todos os direitos reservados. 
+        </p>
+    </footer>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const graLinha = document.getElementById('graficoLinha');
+    graLinha.width = "100%"
+    new Chart(graLinha, {
+        type: 'line',
+        data: {
+            // valores do eixo X
+            labels: ['06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00',],
+            datasets: [
+                {
+                    // dados que a linha vai se basear para percorrer o gráfico
+                    data: [26, 26.4, 25.6, 26, 27, 27.5, 28, 32, 26],
+                    borderColor: "#074116",
+                    backgroundColor: "#074116",
+                    label: 'Temperatura'
+                },
+                {
+                    // dados que a linha vai se basear para percorrer o gráfico
+                    data: [29, 29, 29, 29, 29, 29, 29, 29, 29],
+                    borderColor: "#FF0000",
+                    backgroundColor: "#FF0000",
+                    label: 'Máximo'
+                },
+                {
+                    // dados que a linha vai se basear para percorrer o gráfico
+                    data: [24, 24, 24, 24, 24, 24, 24, 24, 24],
+                    borderColor: "#2400FF",
+                    backgroundColor: "#2400FF",
+                    label: 'Minímo'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            // scale defini o valor minimo e máximo do eixo Y
+            scale: {
+                y: {
+                    min: 15,
+                    max: 35
+                }
+            }
+        }
+    });
+
+    const graLinha2 = document.getElementById('graficoLinha2');
+    graLinha2.width = "100%"
+    new Chart(graLinha2, {
+        type: 'line',
+        data: {
+            // valores do eixo X
+            labels: ['06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00',],
+            datasets: [
+            {
+                    // dados que a linha vai se basear para percorrer o gráfico
+                    data: [111, 210, 225, 231, 197, 271, 421, 324, 359],
+                    borderColor: "#074116",
+                    backgroundColor: "#074116",
+                    label: 'Luminosidade'
+                },
+                {
+                    // dados que a linha vai se basear para percorrer o gráfico
+                    data: [400, 400, 400, 400, 400, 400, 400, 400, 400],
+                    borderColor: "#FF0000",
+                    backgroundColor: "#FF0000",
+                    label: 'Máximo'
+                },
+                {
+                    // dados que a linha vai se basear para percorrer o gráfico
+                    data: [101, 101, 101, 101, 101, 101, 101, 101, 101],
+                    borderColor: "#2400FF",
+                    backgroundColor: "#2400FF",
+                    label: 'Minímo'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            // scale defini o valor minimo e máximo do eixo Y
+            scale: {
+                y: {
+                    min: 50,
+                    max: 450
+                }
+            }
+        }
+    });
+</script>

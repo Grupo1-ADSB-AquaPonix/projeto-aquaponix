@@ -1,0 +1,369 @@
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    display: contents;
+    width: 100%;
+    height: 100%;
+    font-family: "Montserrat Alternates", sans-serif;
+}
+
+#navBar{
+    background-color: #0e420c;
+    position: fixed;
+    top: 0;
+}
+
+#Footer{
+    background-color: #0e420c;
+}
+
+#links{
+    width: 75%;
+}
+
+#links ul{
+    width: 100%;
+}
+
+#links2 ul{
+    width: 50%;
+}
+
+.logoEmpresa{
+    height: 100%;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+}
+
+.logoEmpresa a{
+    color: white;
+}
+
+.logoEmpresa a:hover {
+    color: aqua;
+}
+
+.container-links{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.links{
+    height: 80%;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.links2{
+    height: 80%;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.links ul, .links2 ul{
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+}
+
+.links a, .links2 a{
+    color: white;
+    text-decoration: none;
+}
+
+.links a:hover, .links2 a:hover{
+    color: aqua;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    background-image: url('./assets/aquaponia_fundo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container-banner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: rgb(0, 0, 0, 0.4);
+}
+
+.container-banner h1{
+    font-size: 50px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.container-banner a{
+    height: 7vh;
+    width: 15%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: rgb(0, 0, 0, 0.8)
+}
+
+.container-banner a:hover{
+    transition: 0.2s;
+    background-color: black;
+    transform: scale(1.03);
+}
+
+.informacao{
+    width: 100%;
+    height: 90vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    background-color: rgb(57, 68, 29);
+}
+
+.box-imagem{
+    height: 70%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-sistema{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.informacao span, .box-texto span{
+    height: 70%;
+    width: 80%;
+    display: flex;
+    font-size: 25px;
+}
+
+.informacao h1, .box-texto h1{
+    height: 10%;
+    width: 80%;
+    display: flex;
+    font-size: 40px;
+}
+
+.conteudo {
+    width: 50%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.container-oqueFazemos{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: rgb(35, 41, 20);
+}
+
+
+.box-texto {
+    width: 50%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    color: white;
+}
+
+.box-imagem2{
+    height: 80%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-sistema2{
+    height: 90%;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.nos{
+    background-image: url('./assets/fundo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.informacaoNos {
+    width: 75%;
+    height: 35%;
+    display: flex;
+    align-items: center;
+    padding: 2%;
+    text-align: center;
+    background-color: rgb(0, 0, 0, 0.6);
+}
+
+.nos h1{
+    height: 10%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.informacaoNos p{
+    display: flex;
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    justify-content: center;
+}
+
+.container-faleConosco{
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #181B09;
+}
+
+.box-contatos{
+    height: 100%;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.box-mandar-email{
+    height: 100%;
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fale-conosco{
+    height: 20%;
+    width: 80%;
+    margin-top: 10%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.box-plataforma-contatos{
+    height: 10%;
+    width: 80%;
+}
+
+.box-plataforma-contatos img:hover{
+    cursor: pointer;
+}
+
+.box-formulario-email{
+    height: 70%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.box-formulario-email input{
+    height: 8%;
+    width: 100%;
+    padding-left: 3%;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    background-color: #D9D9D9;
+}
+
+.box-formulario-email textarea{
+    height: 40%;
+    width: 100%;
+    padding-left: 3%;
+    padding-top: 3%;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    background-color: #D9D9D9;
+}
+
+.box-formulario-email button{
+    height: 50px;
+    width: 200px;
+    cursor: pointer;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    background-color: #0e420c;
+}
+
+.box-formulario-email button:hover{
+    transition: 0.2s;
+    transform: scale(1.02);
+    background-color: #FFF;
+    color: #000;
+    border: 1px solid #0e420c;
+}
+
+.box-formulario-email button:active{
+    transition: 0.3s;
+    transform: scale(1);
+    background-color: #004047;
+}

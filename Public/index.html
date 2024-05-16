@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquaponix</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="templateNavBar.css">
+    <link rel="stylesheet" href="./templateFooter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav id="navBar">
+        <div class="logoEmpresa">
+            <h1><a href="#">AQUAPONIX</a></h1>
+        </div>
+        <div class="container-links" id="links">
+            <div class="links">
+                <ul>
+                    <a href="#inicio">
+                        <li>Início</li>
+                    </a>
+                    <a href="#aquaponia">
+                        <li>Aquaponia</li>
+                    </a>
+                    <a href="#oqueFazemos">
+                        <li>O que fazemos</li>
+                    </a>
+                    <a href="#sobreNos">
+                        <li>Sobre nós</li>
+                    </a>
+                    <a href="#contatos">
+                        <li>Contatos</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="links2" id="links2">
+                <ul>
+                    <a href="./tela-login/telaLogin.html">
+                        <li>Login</li>
+                    </a>
+                    <li>|</li>
+                    <a href="./cadastro/telaCadastro.html"> 
+                        <li> Cadastro </li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="banner" id="inicio">
+        <div class="container-banner">
+            <h1>BEM VINDO A AQUAPONIX</h1>
+            <a href="./simulador-financeiro/simulador.html">Simular Ganhos!</a>
+        </div>
+    </div>
+    <div class="informacao" id="aquaponia">
+        <div class="box-imagem">
+            <img class="img-sistema" height="100%" src="./assets/sistema-aquaponico.png">
+        </div>
+        <div class="conteudo">
+            <h1>O que é aquaponia?</h1>
+            <span>
+                O sistema de aquaponia integra o cultivo de peixes e hortaliças em um sistema simbiótico com a recirculação de água e nutrientes, sendo uma alternativa de renda para pequenos produtores e ambientes urbanos com pouco espaço, utilizando quantidade reduzida de água.
+            </span>
+        </div>
+    </div>
+    </div>
+    <div class="container-oqueFazemos" id="oqueFazemos">
+        <div class="box-texto">
+            <h1>O Que Fazemos?</h1>
+            <span>
+                Nosso projeto tem como foco o monitoramento de sistemas aquaponicos utilizamos sensores inteligentes para
+                monitorar constantemente a temperatura da água e sistemas de automação para otimizar a iluminação das
+                plantas. Os dados são acessíveis remotamente via aplicação web, permitindo respostas rápidas a qualquer
+                problema.
+            </span>
+        </div>
+        <div class="box-imagem2">
+            <img src="./assets/simbioso-peixe-planta.png" class="img-sistema2" alt="imagem de um peixe">
+        </div>
+    </div>
+    <div class="nos" id="sobreNos">
+        <h1>Sobre Nós</h1>
+        <div class="informacaoNos">
+            <p> 
+                A AquaPonix é uma empresa de soluções IoT voltadas para a área agrícola na produção sustentável a partir do método de Aquaponia,  a junção entre inovação e sustentabilidade, baseada em um ambiente simbiótico entre peixes e plantas. Nossa parte nesse sistema é coletar, monitorar e tratar os dados dos sensores para a sua produção crescer saudável, e dados financeiros, para garantir uma produção lucrativa, tendo bruscas reduções de custo e altas no lucro do seu negócio.
+            </p>
+        </div>
+    </div>
+    <div class="container-faleConosco" id="contatos">
+        <div class="box-contatos">
+            <div class="fale-conosco">
+                <h2>FALE CONOSCO</h2>
+                <span>contatoEmpresa@empresa.com</span>
+            </div>
+            <div class="box-plataforma-contatos">
+                <img src="./assets/img-instagram.png" height="42px" width="42px" alt="imagem do instagram">
+                <img src="./assets/img-whatsapp.png" height="42px" width="42px" alt="imagem do whatsapp">
+                <img src="./assets/img-linkedin.png" height="42px" width="42px" alt="imagem do linkedin">
+            </div>
+        </div>
+        <div class="box-mandar-email">
+            <div class="box-formulario-email">
+                <input type="text" id="input_nome" placeholder="Seu nome">
+                <input type="text" id="input_email" placeholder="Seu email">
+                <textarea cols="30" rows="10" placeholder="Sua mensagem" id="textArea_mensagem"></textarea>
+                <button onclick="mensagem()">Enviar Mensagem </button>
+            </div>
+        </div>
+    </div>
+    <footer id="Footer">
+        <p>
+            Aquaponix &copy; 2024 Todos os direitos reservados. 
+        </p>
+    </footer>
+</body>
+
+</html>
+
+<script>
+    function mensagem(){
+        var nome = document.getElementById('input_nome').value;
+        var email = document.getElementById('input_email').value;
+        var mensagem = document.getElementById('textArea_mensagem').value;
+
+        if (nome == '' || email == '' || mensagem == ''){
+            alert('Preencha os campos para enviar sua mensagem')
+        } else{
+            alert('Mensagem Enviada!')
+        }
+    }
+</script>

@@ -1,0 +1,180 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat Alternates", sans-serif;
+    
+    background-color: #3CA6A6;
+}
+
+#navBar{
+    justify-content: space-between;
+    background-color: #074116;
+}
+
+#Footer{
+    background-color: black;
+}
+
+#links{
+    width: 35%;
+}
+
+#links2{
+    width: 90%;
+}
+
+.container{
+    height: 170vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.box-titulo{
+    height: 10%;
+    width: 90%;
+    border-bottom: 1px solid #FFF;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.div-title{
+    height: 100%;
+    width: 30%;
+ 
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.div-metricas{
+    height: 90%;
+    width: 70%;
+
+    margin: 1%;
+    border-radius: 6px;
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    color: white;
+}
+
+.div-metricas h2{
+    margin: 0px;
+    font-size: 18px;
+}
+
+.div-metricas span{
+    font-size: 15px;
+}
+
+.box-tanques{
+    min-height: 8%;
+    height: auto;
+    width: 90%;
+
+    display: block;
+    overflow-y: auto;
+}
+
+.box-buttons{
+    height: 100%;
+    min-width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.box-buttons button{
+    height: 60%;
+    min-width: 15%;
+
+    outline: none;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+
+    font-size: 1.4em;
+    color: white;
+    background-color: #53A253;
+}
+
+.box-buttons button:not(:first-child){
+    margin-left: 2%;
+}
+
+.box-buttons button:hover{
+    transition: 0.2s;
+    background-color: #427e42;
+}
+
+.box-buttons button:active{
+    transition: 0.2s;
+    transform: scale(0.98);
+    background-color: #305C30;
+}
+
+.box-graficos{
+    height: 75%;
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.especificacoes-grafico{
+    height: 45%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.box-informacoes{
+    height: 25%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.tanque, .horta{
+    height: 40%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.tanque h4, .horta h4{
+    margin: 0px;
+    margin-left: 2%;
+}
+
+.extras-tanque, .extras-horta{
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.extras-tanque span, .extras-horta span{
+    margin-left: 2%;
+}
+
+.grafico-linha{
+    height: 75%;
+    padding: 2%;
+
+    border-radius: 8px;
+    background-color: white;
+}

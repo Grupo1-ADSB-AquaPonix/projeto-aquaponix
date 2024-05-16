@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
+
 <body>
     <nav id="navlogin">
         <div class="logoEmpresa">
@@ -40,7 +42,7 @@
     <div class="container">
         <h1>Login</h1>
         <div class="login">
-            <input class="input" type="text" placeholder="E-mail ou CNPJ" id="input_email">
+            <input class="input" type="text" placeholder="E-mail ou CNPJ" id="input_login">
             <input class="input" type="password" placeholder="Senha" id="input_senha">
             <div class="reset">
                 <div>
@@ -59,6 +61,59 @@
             Aquaponix &copy; 2024 Todos os direitos reservados.
         </span>
     </footer>
-    <script src="./validaLogin.js"></script>
 </body>
+
 </html>
+
+<script>
+    async function validaLogin() {
+        var login = document.getElementById('input_login').value;
+        var senha = document.getElementById('input_senha').value;
+
+        if (login == "" || senha == "") {
+            alert('Preencha todos os campos para continuar')
+        }
+        else {
+
+            let url = "/usuarios/autenticar";
+            await fetch(url, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    "Content-Type": 'application/json'
+                },
+                body: JSON.stringify({
+                    loginUser: login,
+                    senhaUser: senha
+                })
+            }).then((res) => {
+
+                if (res.ok) {
+                    res.json().then((data) => {
+                        console.log(data)
+                        console.log(JSON.stringify(data));
+                        if (login.indexOf('@') == -1) {
+                            sessionStorage.ID_EMPRESA = data.idEmpresa;
+                            sessionStorage.RAZAO_SOCIAL = data.razaoSocial;
+                            sessionStorage.CNPJ = data.cnpj;
+                        } else {
+                            sessionStorage.ID_USUARIO = data.idFuncionario;
+                            sessionStorage.ID_EMPRESA = data.fkEmpresa;
+                            sessionStorage.NOME_USUARIO = data.nome;
+                            sessionStorage.EMAIL = data.email;
+                        }
+                    })
+
+                    setTimeout(() => {
+                        window.location.href = ('../dashboardTanque/dashboardTanque.html')
+                    }, 2000)
+                } else {
+                    res.text().then((err) => {
+                        console.error(err);
+                    })
+                }
+            })
+
+        }
+    }
+</script>

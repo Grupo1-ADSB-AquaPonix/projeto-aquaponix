@@ -33,7 +33,6 @@ fkEmpresa int,
 constraint pkFuncionarioEmpresa primary key (idFuncionario, fkEmpresa),
 nome varchar(45) not null,
 email varchar(45) not null,
-cpf char(11) unique not null,
 telefoneCelular varchar(20),
 senha varchar(30),
 constraint fkFuncionarioEmpresa foreign key (fkEmpresa)

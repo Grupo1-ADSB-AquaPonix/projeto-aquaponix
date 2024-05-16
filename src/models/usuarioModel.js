@@ -18,12 +18,6 @@ const buscarEmpresa = (cnpj) => {
     return database.executar(script);
 }
 
-const listarEmpresas = () => {
-
-    const script = `SELECT * FROM empresa`;
-    return database.executar(script);
-}
-
 const inserirEmpresa = (razaoSocial, cnpj, telefone1, telefone2, senha, fkEndereco) => {
 
     const script = `INSERT INTO empresa VALUES (default, '${razaoSocial}', '${cnpj}', '${telefone1}', '${telefone2}', '${senha}', ${fkEndereco})`;
@@ -36,11 +30,17 @@ const inserirFuncionario = (fkEmpresa, nome, email, telefone, senha) => {
     return database.executar(script);
 }
 
+const buscarFuncionarios = (idEmpresa) => {
+    const script = `SELECT idfuncionario FROM funcionario where fkEmpresa = ${idEmpresa}`;
+    return database.executar(script);
+}
+
+
 module.exports = {
     autenticarUsuario,
     autenticarEmpresa,
     buscarEmpresa,
-    listarEmpresas,
     inserirEmpresa,
-    inserirFuncionario
+    inserirFuncionario,
+    buscarFuncionarios
 };

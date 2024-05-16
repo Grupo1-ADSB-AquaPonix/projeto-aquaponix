@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,15 @@
     <link rel="stylesheet" href="../templateFooter.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <nav id="navBar" style="position: relative;">
         <div class="logoEmpresa">
-            <h1><a href="../home.html">AQUAPONIX</a></h1>
+            <h1><a href="../index.html">AQUAPONIX</a></h1>
         </div>
         <div class="container-links" id="container-links">
             <div class="links2" id="links2">
@@ -23,7 +27,7 @@
                     <li>|</li>
                     <li><a href="../dashboard/painel.html">DashBoard</a></li>
                     <li>|</li>
-                    <li><a href="../home.html">Sair</a></li>
+                    <li><a href="../index.html">Sair</a></li>
                 </ul>
             </div>
         </div>
@@ -40,14 +44,71 @@
                 <input type="password" id="input_senha" placeholder="* Senha">
                 <input type="password" id="input_confirmSenha" placeholder="* Confirmar senha">
                 <button class="btn-criarconta" onclick="cadastrarFuncionario()">Criar Conta</button>
-        </div>
+            </div>
     </article>
     <footer>
         <span>
-            Aquaponix &copy; 2024 Todos os direitos reservados. 
+            Aquaponix &copy; 2024 Todos os direitos reservados.
         </span>
     </footer>
-
-    <script src="./validaCadastro.js"></script>
 </body>
 </html>
+
+<script>
+    function cadastrarFuncionario() {
+        var nome = document.getElementById('input_nomeFuncionario').value;
+        var email = document.getElementById('input_email').value;
+        var telefone = document.getElementById('input_telefone').value;
+        var senha = document.getElementById('input_senha').value;
+        var confirmSenha = document.getElementById('input_confirmSenha').value;
+        var contArroba = 0;
+
+        for (var i = 0; i < email.length; i++) {
+            if (email[i] == "@") {
+                contArroba++;
+            }
+        }
+
+        if (nome == '' || email == '' || telefone == '' || senha == '' || confirmSenha == '') {
+            alert('Complete todos os campos obrigatórios');
+        } else if (nome.length < 1) {
+            alert('Nome Inválido');
+        } else if (contArroba > 1) {
+            alert('O email só pode ter um @');
+        } else if (email.indexOf(".") == -1) {
+            alert('Email inválido');
+        } else if (senha.length < 5) {
+            alert('Senha precisa ter no minímo 5 caracteres');
+        } else if (senha.indexOf("!") == -1 && senha.indexOf("#") == -1 && senha.indexOf("$") == -1 && senha.indexOf('@') == -1 && senha.indexOf('%') == -1 && senha.indexOf('*') == -1) {
+            alert('A senha precisa conter um caracter especial');
+        } else if (confirmSenha !== senha) {
+            alert('As senhas não coincidem');
+        } else {
+
+            fetch("/usuarios/cadastrarFuncionario", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    idEmpresa: sessionStorage.ID_EMPRESA,
+                    nomeFuncionario: nome,
+                    emailFuncionario: email,
+                    telefoneFuncionario: telefone,
+                    senhaFuncionario: senha
+                })
+            }).then((res) => {
+
+                if (res.ok) {
+                    res.json().then((data) => {
+                        console.log(data);
+                    })
+                } else {
+                    res.text().then((err) => {
+                        console.error(err);
+                    })
+                }
+            })
+        }
+    }
+</script>

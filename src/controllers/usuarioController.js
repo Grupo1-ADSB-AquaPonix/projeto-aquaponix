@@ -3,7 +3,7 @@ const enderecoModel = require('../models/enderecoModel');
 
 const autenticar = (req, res) => {
 
-    const login = req.body.emailUser;
+    const login = req.body.loginUser;
     const senha = req.body.senhaUser;
 
     if(login.trim() == ""){
@@ -43,10 +43,6 @@ const cadastrar = async (req, res) => {
     const numero = req.body.numeroEmpresa;
     const complemento = req.body.complementoEmpresa;
 
-    console.log(razaoSocial);
-    console.log(numero);
-    console.log(complemento);
-
     const cnpjEmpresa = await usuarioModel.buscarEmpresa(cnpj).then((empresa) => {
         return empresa[0]
     })
@@ -72,15 +68,11 @@ const cadastrar = async (req, res) => {
 
 const cadastrarFuncionario = async (req, res) => {
 
+    const fkEmpresa = req.body.idEmpresa;
     const nome = req.body.nomeFuncionario;
     const email = req.body.emailFuncionario;
     const telefone = req.body.telefoneFuncionario;
     const senha = req.body.senhaFuncionario;
-
-
-    const cnpjEmpresa = await usuarioModel.buscarEmpresa(cnpj).then((empresa) => {
-        return empresa[0]
-    })
 
     if (nome == '' || email == '' || telefone == '' || senha == '') {
         res.status(400).send('Preencha todos os campos para continuar')
@@ -90,12 +82,11 @@ const cadastrarFuncionario = async (req, res) => {
         res.status(400).send("Senha precisa conter no minimo 6 caracteres")
     } else{
         
-        await enderecoModel.inserirEndereco(cep, numero, complemento);
-        const getLastId = await enderecoModel.ultimoRegistro().then((data) => {
-            return data[0];
+        const idUsuario = await usuarioModel.buscarFuncionarios(fkEmpresa).then((data) => {
+            return data.length == 0 ? 1 : data.length + 1;
         })
 
-        await usuarioModel.inserirEmpresa(razaoSocial, cnpj, telefone1, telefone2, senha, getLastId.idEndereco).then((data) => {
+        await usuarioModel.inserirFuncionario(idUsuario, fkEmpresa, nome, email, telefone, senha).then((data) => {
             res.status(203).json(data);
         })
     }

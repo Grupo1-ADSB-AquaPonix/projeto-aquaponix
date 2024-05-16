@@ -6,13 +6,8 @@ body{
     background-color: #3CA6A6;
 }
 
-#navBar{
-    justify-content: space-between;
+#navBar, #footer{
     background-color: #074116;
-}
-
-#Footer{
-    background-color: black;
 }
 
 #links{

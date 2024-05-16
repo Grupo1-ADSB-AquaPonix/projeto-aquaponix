@@ -82,11 +82,11 @@ const cadastrarFuncionario = async (req, res) => {
         res.status(400).send("Senha precisa conter no minimo 6 caracteres")
     } else{
         
-        const idUsuario = await usuarioModel.buscarFuncionarios(fkEmpresa).then((data) => {
+        const idFuncionario = await usuarioModel.buscarFuncionarios(fkEmpresa).then((data) => {
             return data.length == 0 ? 1 : data.length + 1;
         })
 
-        await usuarioModel.inserirFuncionario(idUsuario, fkEmpresa, nome, email, telefone, senha).then((data) => {
+        await usuarioModel.inserirFuncionario(idFuncionario, fkEmpresa, nome, email, telefone, senha).then((data) => {
             res.status(203).json(data);
         })
     }

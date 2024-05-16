@@ -14,6 +14,10 @@ article{
     background-image: url('../assets/horta-piscina.png');
 }
 
+#navBar, #footer{
+    background-color: #074116;
+}
+
 #container-links{
     width: 35%;
 }

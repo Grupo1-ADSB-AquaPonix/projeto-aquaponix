@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <nav id="navBar" style="position: relative;">
+    <nav id="navBar">
         <div class="logoEmpresa">
             <h1><a href="../index.html">AQUAPONIX</a></h1>
         </div>
@@ -25,9 +25,7 @@
                 <ul>
                     <li><ins style="font-weight: bolder; color: #a6cc8f;">Cadastro Funcionário</ins></li>
                     <li>|</li>
-                    <li><a href="../dashboard/painel.html">DashBoard</a></li>
-                    <li>|</li>
-                    <li><a href="../index.html">Sair</a></li>
+                    <li><a href="../dashboardTanque/dashboardTanque.html">DashBoard</a></li>
                 </ul>
             </div>
         </div>
@@ -46,7 +44,7 @@
                 <button class="btn-criarconta" onclick="cadastrarFuncionario()">Criar Conta</button>
             </div>
     </article>
-    <footer>
+    <footer id="footer">
         <span>
             Aquaponix &copy; 2024 Todos os direitos reservados.
         </span>
@@ -103,6 +101,10 @@
                     res.json().then((data) => {
                         console.log(data);
                     })
+                    alert('Funcionário cadastrado com sucesso!')
+                    setTimeout(() => {
+                        window.location.href = ('../dashboardTanque/dashboardTanque.html')
+                    }, 2000)
                 } else {
                     res.text().then((err) => {
                         console.error(err);

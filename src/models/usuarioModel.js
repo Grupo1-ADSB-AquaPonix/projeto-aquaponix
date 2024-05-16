@@ -24,9 +24,9 @@ const inserirEmpresa = (razaoSocial, cnpj, telefone1, telefone2, senha, fkEndere
     return database.executar(script);
 }
 
-const inserirFuncionario = (fkEmpresa, nome, email, telefone, senha) => {
+const inserirFuncionario = (idFuncionario, fkEmpresa, nome, email, telefone, senha) => {
 
-    const script = `INSERT INTO funcionario VALUES ('${fkEmpresa}','${nome}', '${email}', '${telefone}', '${senha}')`;
+    const script = `INSERT INTO funcionario VALUES ('${idFuncionario}' ,'${fkEmpresa}','${nome}', '${email}', '${telefone}', '${senha}')`;
     return database.executar(script);
 }
 

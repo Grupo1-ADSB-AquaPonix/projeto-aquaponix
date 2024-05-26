@@ -1,5 +1,6 @@
 const usuarioModel = require('../models/usuarioModel');
 const enderecoModel = require('../models/enderecoModel');
+const medidasModel = require('../models/medidasModels');
 
 const autenticar = (req, res) => {
 
@@ -17,7 +18,23 @@ const autenticar = (req, res) => {
                 if(resposta.length == 0){
                     res.status(400).send('login e/ou senha estão incorretos');
                 } else{
-                    res.status(203).json(resposta[0]);
+                    
+                    medidasModel.buscarLocaisEmpresa(resposta[0].idEmpresa).then((tanques) => {
+
+                        if(tanques.length > 0){
+                            res.json({
+                                idEmpresa: resposta[0].idEmpresa,
+                                razaoSocial: resposta[0].razaoSocial,
+                                cnpj: resposta[0].cnpj,
+                                tanques: tanques
+                            });
+                        } else{
+                            res.json({
+                                empresa: resposta[0],
+                                tanques: []
+                            })
+                        }
+                    })
                 }
             })
         } else{
@@ -25,7 +42,23 @@ const autenticar = (req, res) => {
                 if(resposta.length == 0){
                     res.status(400).send('email e/ou senha estão incorretos');
                 } else{
-                    res.status(203).json(resposta[0]);
+                    medidasModel.buscarTanquesEmpresa(resposta[0].fkEmpresa).then((tanques) => {
+
+                        if(tanques.length > 0){
+                            res.json({
+                                idFuncionario: resposta[0].idFuncionario,
+                                fkEmpresa: resposta[0].fkEmpresa,
+                                nome: resposta[0].nome,
+                                email: resposta[0].email,
+                                tanques: tanques
+                            });
+                        } else{
+                            res.json({
+                                empresa: resposta[0],
+                                tanques: []
+                            })
+                        }
+                    })
                 }
             })
         }

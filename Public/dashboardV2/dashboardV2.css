@@ -19,7 +19,8 @@ body{
 }
 
 .container{
-    height: 170vh;
+    height: auto;
+    min-height: 170vh;
 
     display: flex;
     flex-direction: column;
@@ -30,16 +31,24 @@ body{
 .box-titulo{
     height: 10%;
     width: 90%;
-    border-bottom: 1px solid #FFF;
 
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: space-evenly;
 }
 
-.div-title{
+.box-metricas{
+    height: auto;
+    min-height: 30vh;
+    width: 100%;
+
+    border-top: 1px solid #FFF;
+}
+
+.div-metricas-sensores{
     height: 100%;
-    width: 30%;
+    width: 100%;
  
     display: flex;
     align-items: center;
@@ -47,7 +56,8 @@ body{
 }
 
 .div-metricas{
-    height: 90%;
+    height: auto;
+    min-height: 10vh;
     width: 70%;
 
     margin: 1%;
@@ -56,23 +66,22 @@ body{
     display: flex;
     text-align: center;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column;
 
     color: white;
 }
 
-.div-metricas h2{
-    margin: 0px;
-    font-size: 18px;
-}
-
 .div-metricas span{
-    font-size: 15px;
+    height: auto;
+    width: 90%;
+
+    display: flex;
+    align-items: flex-start;
 }
 
 .box-tanques{
-    min-height: 8%;
+    min-height: 20vh;
     height: auto;
     width: 90%;
 
@@ -80,47 +89,20 @@ body{
     overflow-y: auto;
 }
 
-.box-buttons{
-    height: 100%;
-    min-width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.box-buttons button{
-    height: 60%;
-    min-width: 15%;
+.inp_pesquisar{
+    height: 5vh;
+    width: 3vw;
+    padding-left: 0.5%;
 
     outline: none;
-    cursor: pointer;
-    border-radius: 8px;
-    border: none;
-
-    font-size: 1.4em;
-    color: white;
-    background-color: #53A253;
-}
-
-.box-buttons button:not(:first-child){
-    margin-left: 2%;
-}
-
-.box-buttons button:hover{
-    transition: 0.2s;
-    background-color: #427e42;
-}
-
-.box-buttons button:active{
-    transition: 0.2s;
-    transform: scale(0.98);
-    background-color: #305C30;
+    border: 2px solid black;
+    border-radius: 6px;
 }
 
 .box-graficos{
-    height: 75%;
+    height: 150vh;
     width: 90%;
+
 
     display: flex;
     flex-direction: column;

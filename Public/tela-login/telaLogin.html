@@ -90,24 +90,25 @@
 
                 if (res.ok) {
                     res.json().then((data) => {
-                        console.log(data)
-                        console.log(JSON.stringify(data));
+
                         if (login.indexOf('@') == -1) {
                             sessionStorage.ID_EMPRESA = data.idEmpresa;
                             sessionStorage.RAZAO_SOCIAL = data.razaoSocial;
                             sessionStorage.CNPJ = data.cnpj;
+                            sessionStorage.LOCAIS = JSON.stringify(data.tanques);
                         } else {
                             sessionStorage.ID_USUARIO = data.idFuncionario;
                             sessionStorage.ID_EMPRESA = data.fkEmpresa;
                             sessionStorage.NOME_USUARIO = data.nome;
                             sessionStorage.EMAIL = data.email;
+                            sessionStorage.LOCAIS = JSON.stringify(data.tanques);
                         }
-                    })
+                    }) 
 
                     alert('Login efetuado com sucesso! \n Redirecionando para dashboard')
-
+                    
                     setTimeout(() => {
-                        window.location.href = ('../dashboardTanque/dashboardTanque.html')
+                        window.location.href = ('../dashboardV2/dashboardV2.html');
                     }, 2000)
                 } else {
                     res.text().then((err) => {

@@ -26,6 +26,7 @@ function exibirAquariosDoUsuario() {
                     </div>
                 </div>
             `;
+            obterDadosGrafico(local);
         } else if(local.tipo == "Horta"){
             document.getElementById('graficos').innerHTML += `
                 <div class="especificacoes-grafico">
@@ -44,35 +45,21 @@ function exibirAquariosDoUsuario() {
                     </div>
                 </div>
             `;
+            obterDadosGrafico(local);
             cont++
         }
     }
-    obterDadosGrafico(graficos[0], graficos[1]);
 }
 
-async function obterDadosGrafico(dataTanque, dataHorta) {
+async function obterDadosGrafico(dataLocal) {
 
-    await fetch(`/medidas/buscar/${dataTanque.idLocal}/1`, { cache: 'no-store' }).then(function (response) {
+    await fetch(`/medidas/buscar/${dataLocal.idLocal}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse();
 
-                plotarGrafico(resposta, dataTanque.tipo, dataTanque.idLocal);
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    });
-    await fetch(`/medidas/buscar/${dataHorta.idLocal}/2`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                resposta.reverse();
-                console.log(resposta)
-
-                console.log()
-                plotarGrafico(resposta, dataHorta.tipo, dataHorta.idLocal);
+                plotarGrafico(resposta, dataLocal.tipo, dataLocal.idLocal);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -167,10 +154,64 @@ function plotarGrafico(dadosLocal, tipo, idLocal) {
     // Adicionando gráfico criado em div na tela
     const grafico = document.getElementById(`graficoLinha${idLocal}`);
     grafico.width = '100%';
-    new Chart(
+    let myChart = new Chart(
         grafico,
         configChart
     );
 
-    // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+    setTimeout(() => atualizarGrafico(idLocal, dadosGrafico, myChart), 2000);
+}
+
+function atualizarGrafico(idLocal, dados, myChart) {
+
+    fetch(`/medidas/ultima-medida/${idLocal}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (novoRegistro) {
+
+                // obterDadosGrafico(idLocal);
+                // alertar(novoRegistro, idLocal);
+                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                console.log(`Dados atuais do gráfico:`);
+                console.log(dados);
+
+                // let avisoCaptura = document.getElementById(`avisoCaptura${idLocal}`)
+                // avisoCaptura.innerHTML = ""
+
+
+                if (novoRegistro[0].valor == dados.labels[dados.labels.length - 1]) {
+                    console.log("---------------------------------------------------------------")
+                    console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                    // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                    console.log("Horário do novo dado capturado:")
+                    console.log(novoRegistro[0].valor)
+                    console.log("Horário do último dado capturado:")
+                    console.log(dados.labels[dados.labels.length - 1])
+                    console.log("---------------------------------------------------------------")
+                } else {
+                    // tirando e colocando valores no gráfico
+                    dados.labels.shift(); // apagar o primeiro momento
+                    dados.labels.push(novoRegistro[0].data_coleta); // incluir um novo momento
+
+                    dados.datasets[0].data.shift();  // apaga o primeiro registro da medida
+                    dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
+                    
+                    dados.datasets[1].data.push(29); // adiciona a linha vermelha que representa o valor maximo
+                    dados.datasets[2].data.push(24); // adiciona a linha azul que representa o valor minimo
+                    
+                    myChart.update();
+                }
+
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idLocal, dados, myChart), 2000);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idLocal, dados, myChart), 2000);
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
 }

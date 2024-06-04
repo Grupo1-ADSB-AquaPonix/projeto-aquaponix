@@ -109,14 +109,14 @@ insert into sensor values
 	(2, 'LDR', 'Luminosidade', 2, 1);
 
 insert into dadosCapturados values 
-	(1, 27, '14:00:00', 1, 1, 1),
-	(2, 25.5, '15:00:00', 1, 1, 1),
-	(3, 26, '16:00:00', 1, 1, 1),
-	(4, 24, '17:00:00', 1, 1, 1),
-	(1, 280, '14:00:00', 2, 2, 1),
-	(2, 300, '15:00:00', 2, 2, 1),
-	(3, 310, '16:00:00', 2, 2, 1),
-	(4, 320, '17:00:00', 2, 2, 1);
+	(1, 27, default, 1, 1, 1),
+	(2, 25.5, default, 1, 1, 1),
+	(3, 26, default, 1, 1, 1),
+	(4, 24, default, 1, 1, 1),
+	(1, 280, default, 2, 2, 1),
+	(2, 300, default, 2, 2, 1),
+	(3, 310, default, 2, 2, 1),
+	(4, 320, default, 2, 2, 1);
 
 select * from empresa;
 select * from sensor;
@@ -137,3 +137,9 @@ select empresa.idEmpresa as IDEmpresa,
     funcionario.telefoneCelular as 'Telefone Funcionário'
     from empresa join funcionario
     on empresa.idEmpresa = funcionario.fkEmpresa;
+    
+    select * from dadosCapturados;
+    
+    
+insert into dadosCapturados values 
+	(6, 300, default, 2, 1, 1);

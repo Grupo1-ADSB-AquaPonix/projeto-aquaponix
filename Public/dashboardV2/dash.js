@@ -5,10 +5,10 @@ function exibirAquariosDoUsuario() {
     const graficos = JSON.parse(sessionStorage.LOCAIS);
 
     var cont = 1;
-    for(var i = 0; i < graficos.length; i++){
-        
+    for (var i = 0; i < graficos.length; i++) {
+
         var local = graficos[i];
-        if(local.tipo == "Tanque"){
+        if (local.tipo == "Tanque") {
             document.getElementById('graficos').innerHTML += `
                 <div class="especificacoes-grafico">
                     <div class="box-informacoes">
@@ -27,7 +27,7 @@ function exibirAquariosDoUsuario() {
                 </div>
             `;
             obterDadosGrafico(local);
-        } else if(local.tipo == "Horta"){
+        } else if (local.tipo == "Horta") {
             document.getElementById('graficos').innerHTML += `
                 <div class="especificacoes-grafico">
                     <div class="box-informacoes">
@@ -108,11 +108,11 @@ function plotarGrafico(dadosLocal, tipo, idLocal) {
 
         dadosGrafico.labels.push(dadosLocal[i].data_coleta);
 
-        if(tipo == "Tanque"){
+        if (tipo == "Tanque") {
             dadosGrafico.datasets[0].data.push(dadosLocal[i].valor);
             dadosGrafico.datasets[1].data.push(29);
-            dadosGrafico.datasets[2].data.push(24);
-        } else if(tipo == "Horta"){
+            dadosGrafico.datasets[2].data.push(22);
+        } else if (tipo == "Horta") {
             dadosGrafico.datasets[0].data.push(dadosLocal[i].valor);
             dadosGrafico.datasets[1].data.push(400);
             dadosGrafico.datasets[2].data.push(101);
@@ -127,10 +127,10 @@ function plotarGrafico(dadosLocal, tipo, idLocal) {
 
     var vlMin = 0;
     var vlMax = 0;
-    if(tipo == "Tanque"){
+    if (tipo == "Tanque") {
         vlMin = 15;
         vlMax = 35;
-    } else if(tipo == "Horta"){
+    } else if (tipo == "Horta") {
         vlMin = 50;
         vlMax = 450;
     }
@@ -159,10 +159,10 @@ function plotarGrafico(dadosLocal, tipo, idLocal) {
         configChart
     );
 
-    setTimeout(() => atualizarGrafico(idLocal, dadosGrafico, myChart), 2000);
+    setTimeout(() => atualizarGrafico(idLocal, dadosGrafico, myChart, tipo), 2000);
 }
 
-function atualizarGrafico(idLocal, dados, myChart) {
+function atualizarGrafico(idLocal, dados, myChart, tipo) {
 
     fetch(`/medidas/ultima-medida/${idLocal}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -191,12 +191,15 @@ function atualizarGrafico(idLocal, dados, myChart) {
 
                     dados.datasets[0].data.shift();  // apaga o primeiro registro da medida
                     dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
-                    
+
                     myChart.update();
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idLocal, dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => {
+                    alertar(novoRegistro, idLocal, tipo)
+                    atualizarGrafico(idLocal, dados, myChart, tipo)
+                }, 2000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -208,4 +211,141 @@ function atualizarGrafico(idLocal, dados, myChart) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
+}
+
+var alertas = [];
+
+function alertar(resposta, idLocal, tipo) {
+    var valor = resposta[resposta.length - 1].valor;
+
+    var grauDeAviso = '';
+
+    var limites = {
+        muito_alto: 29,
+        alto: 27.5,
+        ideal: 26,
+        baixo: 24,
+        muito_baixo: 22
+    };
+
+    if (tipo == 'horta') {
+        limites.muito_alto = 400,
+            limites.alto = 350,
+            limites.ideal = 250,
+            limites.baixo = 150,
+            limites.muito_baixo = 101
+    }
+
+    var classe_temperatura = 'cor-alerta';
+
+    if (valor >= limites.muito_alto) {
+        if (tipo == 'Tanque') {
+            grauDeAviso = 'perigo quente'
+        } else {
+            grauDeAviso = 'perigo com muita claridade'
+        }
+        classe_temperatura = 'cor-alerta perigo-quente';
+        grauDeAvisoCor = 'cor-alerta perigo-quente'
+        exibirAlerta(valor, idLocal, grauDeAviso, grauDeAvisoCor)
+    }
+    else if (valor < limites.muito_alto && valor >= limites.alto) {
+        if (tipo == 'Tanque') {
+            grauDeAviso = 'alerta quente'
+        } else {
+            grauDeAviso = 'alerta com claridade'
+        }
+        classe_temperatura = 'cor-alerta alerta-quente';
+        grauDeAvisoCor = 'cor-alerta alerta-quente'
+        exibirAlerta(valor, idLocal, grauDeAviso, grauDeAvisoCor)
+    }
+    else if (valor < limites.alto && valor > limites.baixo) {
+        classe_temperatura = 'cor-alerta ideal';
+        removerAlerta(idLocal);
+    }
+    else if (valor <= limites.baixo && valor > limites.muito_baixo) {
+        if (tipo == 'Tanque') {
+            grauDeAviso = 'alerta frio'
+        } else {
+            grauDeAviso = 'alerta pouca claridade'
+        }
+        classe_temperatura = 'cor-alerta alerta-frio';
+        grauDeAvisoCor = 'cor-alerta alerta-frio'
+        exibirAlerta(valor, idLocal, grauDeAviso, grauDeAvisoCor)
+    }
+    else if (valor <= limites.muito_baixo) {
+        if (tipo == 'Tanque') {
+            grauDeAviso = 'perigo frio'
+        } else {
+            grauDeAviso = 'perigo muito escuro'
+        }
+        classe_temperatura = 'cor-alerta perigo-frio';
+        grauDeAvisoCor = 'cor-alerta perigo-frio'
+        exibirAlerta(valor, idLocal, grauDeAviso, grauDeAvisoCor)
+    }
+
+    var card;
+
+    if (document.getElementById(`temp_aquario_${idLocal}`) != null) {
+        document.getElementById(`temp_aquario_${idLocal}`).innerHTML = valor + "°C";
+    }
+    if (document.getElementById(`card_${idLocal}`)) {
+        card = document.getElementById(`card_${idLocal}`)
+        card.className = classe_temperatura;
+    }
+}
+
+function exibirAlerta(valor, idLocal, grauDeAviso, grauDeAvisoCor) {
+    var indice = alertas.findIndex(item => item.idLocal == idLocal);
+
+    if (indice >= 0) {
+        alertas[indice] = { idLocal, valor, grauDeAviso, grauDeAvisoCor }
+    } else {
+        alertas.push({ idLocal, valor, grauDeAviso, grauDeAvisoCor });
+    }
+
+    exibirCards();
+}
+
+function removerAlerta(idLocal) {
+    alertas = alertas.filter(item => item.idLocal != idLocal);
+    exibirCards();
+}
+
+function exibirCards() {
+    alerta.innerHTML = '';
+
+    for (var i = 0; i < alertas.length; i++) {
+        var mensagem = alertas[i];
+        alerta.innerHTML += transformarEmDiv(mensagem);
+    }
+}
+
+function transformarEmDiv({ idLocal, valor, grauDeAviso, grauDeAvisoCor }) {
+    var dadosLocal = JSON.parse(sessionStorage.LOCAIS).find(item => item.idLocal == idLocal);
+    var descricao = dadosLocal.tipo;
+    var tipoDado = '';
+    var unidadeMedida = '';
+
+    if (descricao == 'Tanque') {
+        tipoDado = 'Temperatura';
+        unidadeMedida = 'ºC'
+        if(idLocal > 1){
+            idLocal -= 1;
+        }
+    } else if (descricao == 'Horta') {
+        tipoDado = 'Luminosidade';
+        unidadeMedida = 'Lux'
+        idLocal -= 1;
+    }
+
+    return `
+    <div class="mensagem-alarme">
+        <div class="informacao">
+            <div class="${grauDeAvisoCor}">&#12644;</div> 
+            <h3>${descricao} ${idLocal} está em estado de ${grauDeAviso}!</h3>
+            <small>${tipoDado} capturada: ${valor} ${unidadeMedida}.</small>   
+        </div>
+        <div class="alarme-sino"></div>
+    </div>
+    `;
 }

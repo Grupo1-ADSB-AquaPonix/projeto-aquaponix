@@ -26,7 +26,7 @@ function buscarMedidasEmTempoReal(idLocal) {
     return database.executar(instrucaoSql);
 }
 
-function buscarLocaisEmpresa(idEmpresa){
+function buscarLocaisEmpresa(idEmpresa) {
 
     var instrucaoSql = `SELECT * FROM local WHERE fkEmpresa = ${idEmpresa};`;
     return database.executar(instrucaoSql);

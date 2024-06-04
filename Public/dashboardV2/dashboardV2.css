@@ -1,24 +1,25 @@
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: "Montserrat Alternates", sans-serif;
-    
+
     background-color: #3CA6A6;
 }
 
-#navBar, #footer{
+#navBar,
+#footer {
     background-color: #074116;
 }
 
-#links{
+#links {
     width: 35%;
 }
 
-#links2{
+#links2 {
     width: 90%;
 }
 
-.container{
+.container {
     height: auto;
     min-height: 170vh;
 
@@ -28,7 +29,7 @@ body{
     justify-content: space-evenly;
 }
 
-.box-titulo{
+.box-titulo {
     height: 10%;
     width: 90%;
 
@@ -38,7 +39,7 @@ body{
     justify-content: space-evenly;
 }
 
-.box-metricas{
+.box-metricas {
     height: auto;
     min-height: 30vh;
     width: 100%;
@@ -46,16 +47,16 @@ body{
     border-top: 1px solid #FFF;
 }
 
-.div-metricas-sensores{
+.div-metricas-sensores {
     height: 100%;
     width: 100%;
- 
+
     display: flex;
     align-items: center;
     flex-direction: row;
 }
 
-.div-metricas{
+.div-metricas {
     height: auto;
     min-height: 10vh;
     width: 70%;
@@ -72,7 +73,7 @@ body{
     color: white;
 }
 
-.div-metricas span{
+.div-metricas span {
     height: auto;
     width: 90%;
 
@@ -80,7 +81,7 @@ body{
     align-items: flex-start;
 }
 
-.box-tanques{
+.box-tanques {
     min-height: 20vh;
     height: auto;
     width: 90%;
@@ -89,7 +90,7 @@ body{
     overflow-y: auto;
 }
 
-.inp_pesquisar{
+.inp_pesquisar {
     height: 5vh;
     width: 3vw;
     padding-left: 0.5%;
@@ -99,7 +100,7 @@ body{
     border-radius: 6px;
 }
 
-.box-graficos{
+.box-graficos {
     height: 150vh;
     width: 90%;
 
@@ -109,21 +110,22 @@ body{
     justify-content: space-evenly;
 }
 
-.especificacoes-grafico{
+.especificacoes-grafico {
     height: 45%;
 
     display: flex;
     flex-direction: column;
 }
 
-.box-informacoes{
+.box-informacoes {
     height: 25%;
 
     display: flex;
     flex-direction: column;
 }
 
-.tanque, .horta{
+.tanque,
+.horta {
     height: 40%;
     width: 100%;
 
@@ -132,26 +134,119 @@ body{
     font-size: 1.5rem;
 }
 
-.tanque h4, .horta h4{
+.tanque h4,
+.horta h4 {
     margin: 0px;
     margin-left: 2%;
 }
 
-.extras-tanque, .extras-horta{
+.extras-tanque,
+.extras-horta {
     flex-grow: 1;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.extras-tanque span, .extras-horta span{
+.extras-tanque span,
+.extras-horta span {
     margin-left: 2%;
 }
 
-.grafico-linha{
+.grafico-linha {
     height: 75%;
     padding: 2%;
 
     border-radius: 8px;
     background-color: white;
+}
+
+
+/* ALERTA */
+
+#alerta {
+    position: fixed;
+    top: 1;
+    right: 0;
+    bottom: 0;
+}
+
+.cor-alerta {
+    width: 13%;
+    height: 30%;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.perigo-frio {
+    background-color: #5c6bc0;
+}
+
+.perigo-quente {
+    background-color: #ff7043;
+}
+
+.alerta-frio {
+    background-color: #42a5f5;
+}
+
+.alerta-quente {
+    background-color: #ffee58;
+}
+
+.ideal {
+    background-color: #9ccc65;
+}
+
+.mensagem-alarme {
+    background-color: white;
+    border-radius: 5px;
+    width: 300px;
+    height: 100px;
+    margin: 10px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.mensagem-alarme h3 {
+    font-size: 14px;
+    margin: 0;
+}
+
+.mensagem-alarme .informacao {
+    width: 66%;
+}
+
+.alarme-sino {
+    width: 48px;
+    height: 48px;
+    animation-name: bell;
+    animation-duration: 4s;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
+    background-size: cover;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bell {
+    0% {
+        transform: rotate(25deg)
+    }
+
+    25% {
+        transform: rotate(-25deg)
+    }
+
+    50% {
+        transform: rotate(25deg)
+    }
+
+    75% {
+        transform: rotate(-25deg)
+    }
+
+    100% {
+        transform: rotate(25deg)
+    }
 }

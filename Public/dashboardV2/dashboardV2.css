@@ -21,7 +21,7 @@ body {
 
 .container {
     height: auto;
-    min-height: 170vh;
+    min-height: 130vh;
 
     display: flex;
     flex-direction: column;
@@ -101,7 +101,8 @@ body {
 }
 
 .box-graficos {
-    height: 150vh;
+    height: auto;
+    min-height: 130vh;
     width: 90%;
 
 
@@ -111,7 +112,8 @@ body {
 }
 
 .especificacoes-grafico {
-    height: 45%;
+    height: 60vh;
+    margin-bottom: 1.3%;
 
     display: flex;
     flex-direction: column;

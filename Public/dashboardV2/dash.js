@@ -4,7 +4,7 @@ function filtrarLocal(){
     
     var id = Number(inp_idLocal.value);
     var local = `idLocal${id}`;
-
+    
     console.log(id);
 
     var locais = JSON.parse(sessionStorage.LOCAIS); 
@@ -166,8 +166,8 @@ function plotarGrafico(dadosLocal, tipo, idLocal) {
     var vlMin = 0;
     var vlMax = 0;
     if (tipo == "Tanque") {
-        vlMin = 15;
-        vlMax = 35;
+        vlMin = 10;
+        vlMax = 40;
     } else if (tipo == "Horta") {
         vlMin = 50;
         vlMax = 450;

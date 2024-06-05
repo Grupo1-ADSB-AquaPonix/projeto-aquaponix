@@ -42,7 +42,7 @@ const autenticar = (req, res) => {
                 if(resposta.length == 0){
                     res.status(400).send('email e/ou senha estão incorretos');
                 } else{
-                    medidasModel.buscarTanquesEmpresa(resposta[0].fkEmpresa).then((tanques) => {
+                    medidasModel.buscarLocaisEmpresa(resposta[0].fkEmpresa).then((tanques) => {
 
                         if(tanques.length > 0){
                             res.json({

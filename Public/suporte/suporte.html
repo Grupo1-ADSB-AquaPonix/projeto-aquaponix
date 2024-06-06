@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte</title>
+    <link rel="stylesheet" href="suporte.css">
+    <link rel="stylesheet" href="../templateNavBar.css">
+    <link rel="stylesheet" href="../templateFooter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav id="navBar">
+        <div class="logoEmpresa">
+            <h1><a href="#">AQUAPONIX</a></h1>
+        </div>
+        <div class="container-links" id="links">
+            <div class="links2" id="links2">
+                <ul>
+                    <li><ins style="font-weight: bolder; color: #a6cc8f;">Suporte</ins></li>
+                    <li>|</li>
+                    <a href="../cadastro/cadastroFuncionario.html">
+                        <li>Cadastrar Funcionário</li>
+                    </a>
+                    <li>|</li>
+                    <a href="../dashboardV2/dashboardV2.html">
+                        <li>Dashboard</li>
+                    </a>
+                    <li>|</li>
+                    <a href="../index.html" onclick="sessionStorage.clear()"> 
+                        <li>Sair</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="container-mensagem-usuario" id="div_formularioSuporte"></div>
+        <div class="box-mensagem-ia" id="div_mensagemIA"></div>
+        <div class="box-suporte-telefone">
+            <div class="box-img-servico">
+                <div class="circulo-img">
+                    <img src="../assets/suporte-telefone.png" height="100em" alt="">
+                </div>
+            </div>
+            <div class="box-detalhes-servico">
+                <div class="box-titulo-servico">
+                    <h2>SUPORTE VIA CELULAR</h2>
+                </div>
+                <div class="box-detalhes">
+                    <span>Nesse canal, você não precisa estar conectado para tratar um problema, basta ligar em um dos nossos números de atendimento para sanar suas dúvidas.</span>
+                </div>
+                <div class="box-contato-servico">
+                    <span>(11) 95867-1234</span>
+                </div>
+            </div>
+        </div>
+        <div class="box-suporte-email">
+            <div class="box-img-servico">
+                <div class="circulo-img">
+                    <img src="../assets/suporte-email.png" height="150em" alt="">
+                </div>
+            </div>
+            <div class="box-detalhes-servico">
+                <div class="box-titulo-servico">
+                    <h2>SUPORTE VIA EMAIL</h2>
+                </div>
+                <div class="box-detalhes">
+                    <span>Nesse canal, você consegue nos enviar dúvidas, sugestões e outras informações, além de imagens e arquivos, com um tempo maior para respostas.</span>
+                </div>
+                <div class="box-contato-servico">
+                    <span>aquaponix@contato.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="Footer">
+        <p>
+            Aquaponix &copy; 2024 Todos os direitos reservados. 
+        </p>
+    </footer>
+</body>
+<script src="./suporte.js"></script>
+</html>

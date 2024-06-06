@@ -1,0 +1,196 @@
+body {
+    padding: 0;
+    margin: 0;
+    display: contents;
+    width: 100%;
+    height: 100%;
+    font-family: "Montserrat Alternates", sans-serif;
+}
+
+#navBar{
+    background-color: #074116;
+}
+
+#links{
+    justify-content: flex-end;
+}
+
+#links2{
+    width: 70%;
+    margin-right: 5%;
+    justify-content: center;
+}
+
+.container{
+    min-height: 110vh;
+    height: auto;
+    width: 100%;
+    background-color: #3CA6A6;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.container-mensagem-usuario{
+    height: 20vh;
+    width: 90%;
+    margin-top: 2%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.container-mensagem-usuario h1{
+    margin: 0;
+}
+
+.box-formulario{
+    height: 50%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.txt-mensagem{
+    height: 50%;
+    width: 88%;
+    padding-left: 1%;
+
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    font-size: 1.05rem;
+
+    background-color: #d9d9d9;
+}
+
+.btn-enviar{
+    height: 58%;
+    width: 10%;
+
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+
+    color: white;
+    font-size: 1em;
+    font-weight: bolder;
+    background-color: #53A253;
+}
+
+.btn-enviar:hover{
+    transition: 0.2s;
+    background-color: #427e42;
+}
+
+.btn-enviar:active{
+    transition: 0.2s;
+    background-color: #305C30;
+}
+
+.box-mensagem-ia{
+    height: auto;
+    width: 90%;
+    min-height: 5vh;
+}
+
+.span-resposta-ia{
+    font-size: 1.2em;
+}
+
+.box-suporte-telefone, .box-suporte-email {
+    height: 40vh;
+    width: 90%;
+    margin-top: 1.5%;
+    margin-bottom: 2%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+    background-color: white;
+}
+
+.box-img-servico{
+    height: 100%;
+    width: 25%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circulo-img{
+    height: 80%;
+    width: 70%;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #3CA6A6;
+}
+
+.box-detalhes-servico{
+    height: 100%;
+    width: 70%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.box-titulo-servico{
+    height: 20%;
+    width: 100%;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+.box-titulo-servico h2{
+    margin: 0;
+    padding-bottom: 0.5%;
+    width: fit-content;
+
+    border-bottom: 1px solid black;
+}
+
+.box-detalhes{
+    height: 40%;
+    width: 100%;
+    font-size: 1.1em;
+}
+
+.box-contato-servico{
+    height: 15%;
+    width: 100%;
+}
+
+.box-contato-servico span{
+    padding-bottom: 0.5%;
+    width: fit-content;
+    margin: 0;
+    
+    display: flex;
+    align-items: center;
+    
+    font-size: 1.2em;
+    border-bottom: 3px solid black;
+}
+
+#Footer{
+    background-color: black;
+}

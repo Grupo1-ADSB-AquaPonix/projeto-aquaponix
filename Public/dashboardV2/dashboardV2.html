@@ -14,6 +14,10 @@
     
 </head>
 <body>
+    <button class="box-alertas" id="div_box-alertas" onclick="mostrarAlertas()">
+        <span id="span_qtdAvisos"></span>
+    <img src="../assets/pointer.png" height="30em" class="image-pointer" alt="">
+    </button>
     <nav id="navBar">
         <div class="logoEmpresa">
             <h1><a href="#">AQUAPONIX</a></h1>
@@ -70,7 +74,7 @@
         <div class="box-tanques">
             <h2>Tanque/Horta: <span id="span_locais">Todos</span></h2>
             <span>Pesquisar por número:</span>
-            <input type="text" class="inp_pesquisar" placeholder="ex: 12" id="inp_idLocal" onkeyup="filtrarLocal()">
+            <input type="text" class="inp_pesquisar" placeholder="ex: 12" id="inp_idLocal" oninput="filtrarLocal()">
         </div>
         <div class="box-graficos" id="graficos">
             <!-- paineis de monitoramento ficarão aqui-->

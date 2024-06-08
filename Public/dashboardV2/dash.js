@@ -3,9 +3,6 @@ window.onload = exibirAquariosDoUsuario();
 function filtrarLocal() {
     var id = Number(inp_idLocal.value);
     var local = `idLocal${id}`;
-
-    console.log(id);
-
     var locais = JSON.parse(sessionStorage.LOCAIS);
     var tamanho_lista = locais.length / 2;
     var ultimo_id = document.querySelector(`div[id="${local}"]`);
@@ -30,7 +27,7 @@ function filtrarLocal() {
             var charts = document.querySelectorAll(`div[id="idLocal${i}"]`);
             for (var index = 0; index < 2; index++) {
                 if (charts[index].id == local) {
-                    continue;
+                    charts[index].style.display = 'flex';
                 } else {
                     charts[index].style.display = 'none';
                 }
@@ -385,13 +382,58 @@ function transformarEmDiv({ idLocal, valor, grauDeAviso, corFundoTanque, corFund
         idLocal = idLocal / 2;
     }
 
-    return `
-    <div class="mensagem-alarme" style="background-color: ${descricao == 'Tanque' ? corFundoTanque : corFundoHorta}">
-        <div class="informacao" style="color: ${corFundoTanque == "#ffee58" || corFundoHorta == "#ffee58" ? "black" : "white"}">
-            <h3>${descricao} ${idLocal} está em estado de ${grauDeAviso}!</h3>
-            <small>${tipoDado} capturada: ${valor} ${unidadeMedida}.</small>   
+    var texto = '';
+    if(chave == 'a'){
+        texto = `
+        <div id="caixa-alerta" class="mensagem-alarme" style="background-color: ${descricao == 'Tanque' ? corFundoTanque : corFundoHorta}">
+            <div class="informacao" style="color: ${corFundoTanque == "#ffee58" || corFundoHorta == "#ffee58" ? "black" : "white"}">
+                <h3>${descricao} ${idLocal} está em estado de ${grauDeAviso}!</h3>
+                <small>${tipoDado} capturada: ${valor} ${unidadeMedida}.</small>   
+            </div>
+            <div class="alarme-sino"></div>
         </div>
-        <div class="alarme-sino"></div>
-    </div>
-    `;
+    `
+    }else {
+        texto = `
+        <div id="caixa-alerta" class="mensagem-alarme" style="display: flex; opacity: 1; background-color: ${descricao == 'Tanque' ? corFundoTanque : corFundoHorta}">
+            <div class="informacao" style="color: ${corFundoTanque == "#ffee58" || corFundoHorta == "#ffee58" ? "black" : "white"}">
+                <h3>${descricao} ${idLocal} está em estado de ${grauDeAviso}!</h3>
+                <small>${tipoDado} capturada: ${valor} ${unidadeMedida}.</small>   
+            </div>
+            <div class="alarme-sino"></div>
+        </div>
+    `
+    }
+
+    return texto;
 }
+
+var chave = 'a'
+function mostrarAlertas(){
+    var alerta = document.querySelectorAll("div[id='caixa-alerta']")
+    if(alerta.length >= 0){
+        if(chave == 'a'){
+            chave = 'b'
+            for(var i = 0; i < alerta.length; i++){
+                alerta[i].style.display = 'flex'
+                alerta[i].classList.toggle('mensagem-alarme-visivel')
+            }
+        }else {
+            chave = 'a'
+            for(var i = 0; i < alerta.length; i++){
+                alerta[i].classList.toggle('mensagem-alarme-visivel')
+                alerta[i].style.display = 'none'
+            }
+        }
+    }
+}
+
+setInterval(() => {
+    var divAlertas = document.getElementById("div_box-alertas");
+    if(alertas.length > 0){
+        divAlertas.style.display = "flex";
+        document.getElementById("span_qtdAvisos").innerHTML = `${alertas.length}!`;
+    } else{
+        divAlertas.style.display = "none";
+    }
+}, 1000)

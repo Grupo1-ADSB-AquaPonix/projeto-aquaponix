@@ -1,39 +1,38 @@
 window.onload = exibirAquariosDoUsuario();
 
-function filtrarLocal(){
-    
+function filtrarLocal() {
     var id = Number(inp_idLocal.value);
     var local = `idLocal${id}`;
-    
+
     console.log(id);
 
-    var locais = JSON.parse(sessionStorage.LOCAIS); 
+    var locais = JSON.parse(sessionStorage.LOCAIS);
     var tamanho_lista = locais.length / 2;
     var ultimo_id = document.querySelector(`div[id="${local}"]`);
-    
-    if(id <= 0){
+
+    if (id <= 0) {
         span_locais.innerHTML = `Todos`;
-        
+
         document.getElementById('graficos').innerHTML = ``;
         exibirAquariosDoUsuario();
-    } else if(ultimo_id == null){
+    } else if (ultimo_id == null) {
         span_locais.innerHTML = `Não Encontrado!`;
 
         document.getElementById('graficos').style.justifyContent = 'flex-start';
         document.getElementById('graficos').innerHTML = `<h1>O tanque e horta de número ${id} não existe ou não foi encontrado!</h1>`;
-    } else{
+    } else {
         span_locais.innerHTML = id;
 
-        for(var i = 1; i <= tamanho_lista; i++){
+        for (var i = 1; i <= tamanho_lista; i++) {
 
             var charts = document.querySelectorAll(`div[id="idLocal${i}"]`);
-            for(var index = 0; index < 2; index++){
-                if(charts[index].id == local){
+            for (var index = 0; index < 2; index++) {
+                if (charts[index].id == local) {
                     continue;
-                } else{
+                } else {
                     charts[index].style.display = 'none';
                 }
-            }    
+            }
         }
     }
 }
@@ -41,7 +40,10 @@ function filtrarLocal(){
 function exibirAquariosDoUsuario() {
 
     const graficos = JSON.parse(sessionStorage.LOCAIS);
+    const razaoSocial = sessionStorage.RAZAO_SOCIAL;
 
+
+    document.getElementById('razao-social').innerHTML = `${razaoSocial}`
     var cont = 1;
     for (var i = 0; i < graficos.length; i++) {
 
@@ -255,7 +257,7 @@ var alertas = [];
 
 function alertar(resposta, idLocal, tipo) {
     var valor = Number(resposta[resposta.length - 1].valor);
-    console.log(tipo)    
+    console.log(tipo)
     var grauDeAviso = '';
 
     var limites = {
@@ -268,10 +270,10 @@ function alertar(resposta, idLocal, tipo) {
 
     if (tipo == 'Horta') {
         limites.muito_alto = 400,
-        limites.alto = 350,
-        limites.ideal = 250,
-        limites.baixo = 150,
-        limites.muito_baixo = 101
+            limites.alto = 350,
+            limites.ideal = 250,
+            limites.baixo = 150,
+            limites.muito_baixo = 101
     }
 
     var classe_temperatura = 'cor-alerta';
@@ -295,7 +297,7 @@ function alertar(resposta, idLocal, tipo) {
         grauDeAvisoCor = 'cor-alerta alerta-quente'
         exibirAlerta(valor, idLocal, grauDeAviso, grauDeAvisoCor)
     }
-    else if(valor > limites.baixo){
+    else if (valor > limites.baixo) {
         removerAlerta(idLocal)
     }
     else if (valor <= limites.muito_baixo) {
@@ -364,18 +366,21 @@ function transformarEmDiv({ idLocal, valor, grauDeAviso, grauDeAvisoCor }) {
 
     if (descricao == 'Tanque') {
         tipoDado = 'Temperatura';
-        unidadeMedida = 'ºC'
-        if(idLocal > 1){
+        unidadeMedida = 'ºC';
+        if (idLocal > 1) {
             idLocal -= 1;
         }
     } else if (descricao == 'Horta') {
         tipoDado = 'Luminosidade';
-        unidadeMedida = 'Lux'
-        idLocal -= 1;
+        unidadeMedida = 'Lux';
+        if (idLocal > 1) {
+            idLocal -= 1;
+        }
     }
 
+
     return `
-    <div class="mensagem-alarme">
+    <div class="mensagem-alarme" style="background-color: ${Bakgroundcolor}">
         <div class="informacao">
             <div class="${grauDeAvisoCor}">&#12644;</div> 
             <h3>${descricao} ${idLocal} está em estado de ${grauDeAviso}!</h3>

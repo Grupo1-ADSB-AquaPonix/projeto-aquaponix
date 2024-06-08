@@ -23,12 +23,11 @@ body {
 
 .container {
     height: auto;
-    min-height: 130vh;
-
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .box-titulo {
@@ -42,37 +41,37 @@ body {
 }
 
 .box-metricas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: auto;
-    min-height: 30vh;
+    min-height: 20vh;
     width: 100%;
-
     border-top: 1px solid #FFF;
+    border-bottom: 1px solid #FFF;
 }
 
 .div-metricas-sensores {
     height: 100%;
     width: 100%;
-
     display: flex;
     align-items: center;
     flex-direction: row;
+    border-left: 1px solid #FFF;
+    border-right: 1px solid #FFF;
 }
 
 .div-metricas {
-    height: auto;
-    min-height: 10vh;
+    height: 8vh;
     width: 70%;
-
     margin: 1%;
-    border-radius: 6px;
-
+    border-radius: 5px;
     display: flex;
     text-align: center;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-direction: column;
-
-    color: white;
+    color: #FFF;
 }
 
 .div-metricas span {
@@ -84,8 +83,7 @@ body {
 }
 
 .box-tanques {
-    min-height: 20vh;
-    height: auto;
+    height: 30%;
     width: 90%;
 
     display: block;
@@ -93,46 +91,42 @@ body {
 }
 
 .inp_pesquisar {
-    height: 5vh;
+    height: 3vh;
     width: 3vw;
-    padding-left: 0.5%;
-
     outline: none;
     border: 2px solid black;
+    text-align: center;
     border-radius: 6px;
 }
 
 .box-graficos {
-    height: auto;
-    min-height: 130vh;
-    width: 90%;
-
-
+    margin: 20px 0;
+    height: 20%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .especificacoes-grafico {
-    height: 60vh;
-    margin-bottom: 1.3%;
-
+    height: 50vh;
+    width: 45%;
     display: flex;
     flex-direction: column;
 }
 
 .box-informacoes {
-    height: 25%;
-
     display: flex;
     flex-direction: column;
+    margin-bottom: 1vh;
+    margin-top: 3vh;
 }
 
 .tanque,
 .horta {
     height: 40%;
     width: 100%;
-
     display: flex;
     align-items: center;
     font-size: 1.5rem;
@@ -154,13 +148,12 @@ body {
 
 .extras-tanque span,
 .extras-horta span {
-    margin-left: 2%;
+    margin: 5px 2%;
 }
 
 .grafico-linha {
     height: 75%;
     padding: 2%;
-
     border-radius: 8px;
     background-color: white;
 }
@@ -170,16 +163,16 @@ body {
 
 #alerta {
     position: fixed;
-    top: 1;
     right: 0;
     bottom: 0;
 }
 
 .cor-alerta {
-    width: 13%;
-    height: 30%;
-    border-radius: 50%;
+    width: 15%;
+    height: 40%;
+    border-radius: 100%;
     display: inline-block;
+    margin-bottom: 5px;
 }
 
 .perigo-frio {
@@ -203,10 +196,10 @@ body {
 }
 
 .mensagem-alarme {
-    background-color: white;
+    /* background-color: #FFF; */
     border-radius: 5px;
-    width: 300px;
-    height: 100px;
+    width: 350px;
+    height: 120px;
     margin: 10px;
     padding: 10px 0;
     display: flex;

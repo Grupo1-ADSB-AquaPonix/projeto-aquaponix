@@ -58,6 +58,7 @@ function exibirAquariosDoUsuario() {
                         <div class="extras-tanque">
                             <span>Peixe: ${local.especie}</span>
                             <span>Quantidade de peixes: ${local.qtdEspecie}</span>
+                            <span>Capacidade máxima: ${local.ocupacaoMax}</span>
                         </div>
                     </div>
                     <div class="grafico-linha">
@@ -77,6 +78,7 @@ function exibirAquariosDoUsuario() {
                         <div class="extras-tanque">
                             <span>Planta: ${local.especie}</span>
                             <span>Quantidade de plantas: ${local.qtdEspecie}</span>
+                            <span>Capacidade máxima: ${local.ocupacaoMax}</span>
                         </div>
                     </div>
                     <div class="grafico-linha">
@@ -254,10 +256,12 @@ function atualizarGrafico(idLocal, dados, myChart, tipo) {
 }
 
 var alertas = [];
+var corFundoTanque = '';
+var corFundoHorta = '';
 
 function alertar(resposta, idLocal, tipo) {
     var valor = Number(resposta[resposta.length - 1].valor);
-    console.log(tipo)
+    console.log(tipo);
     var grauDeAviso = '';
 
     var limites = {
@@ -279,42 +283,50 @@ function alertar(resposta, idLocal, tipo) {
     var classe_temperatura = 'cor-alerta';
     if (valor >= limites.muito_alto) {
         if (tipo == 'Tanque') {
-            grauDeAviso = 'perigo quente'
+            corFundoTanque = '#f31c1c';
+            grauDeAviso = 'perigo quente';
         } else {
-            grauDeAviso = 'perigo com muita claridade'
+            grauDeAviso = 'perigo com muita claridade';
+            corFundoHorta = '#f31c1c';
         }
         classe_temperatura = 'cor-alerta perigo-quente';
-        grauDeAvisoCor = 'cor-alerta perigo-quente'
-        exibirAlerta(valor, idLocal, grauDeAviso, grauDeAvisoCor)
+        grauDeAvisoCor = 'cor-alerta perigo-quente';
+        exibirAlerta(valor, idLocal, grauDeAviso, grauDeAvisoCor);
     }
     else if (valor >= limites.alto) {
         if (tipo == 'Tanque') {
-            grauDeAviso = 'alerta quente'
+            grauDeAviso = 'alerta quente';
+            corFundoTanque = '#ffee58';
         } else {
-            grauDeAviso = 'alerta com claridade'
+            grauDeAviso = 'alerta com claridade';
+            corFundoHorta = '#ffee58';
         }
         classe_temperatura = 'cor-alerta alerta-quente';
-        grauDeAvisoCor = 'cor-alerta alerta-quente'
-        exibirAlerta(valor, idLocal, grauDeAviso, grauDeAvisoCor)
+        grauDeAvisoCor = 'cor-alerta alerta-quente';
+        exibirAlerta(valor, idLocal, grauDeAviso, grauDeAvisoCor);
     }
     else if (valor > limites.baixo) {
-        removerAlerta(idLocal)
+        removerAlerta(idLocal);
     }
     else if (valor <= limites.muito_baixo) {
         if (tipo == 'Tanque') {
-            grauDeAviso = 'perigo frio'
+            grauDeAviso = 'perigo frio';
+            corFundoTanque = '#5c6bc0';
         } else {
-            grauDeAviso = 'perigo muito escuro'
+            grauDeAviso = 'perigo muito escuro';
+            corFundoHorta = '#5c6bc0';
         }
         classe_temperatura = 'cor-alerta perigo-frio';
-        grauDeAvisoCor = 'cor-alerta perigo-frio'
-        exibirAlerta(valor, idLocal, grauDeAviso, grauDeAvisoCor)
+        grauDeAvisoCor = 'cor-alerta perigo-frio';
+        exibirAlerta(valor, idLocal, grauDeAviso, grauDeAvisoCor);
     }
     else if (valor <= limites.baixo) {
         if (tipo == 'Tanque') {
-            grauDeAviso = 'alerta frio'
+            grauDeAviso = 'alerta frio';
+            corFundoTanque = '#42a5f5';
         } else {
             grauDeAviso = 'alerta pouca claridade'
+            corFundoHorta = '#42a5f5';
         }
         classe_temperatura = 'cor-alerta alerta-frio';
         grauDeAvisoCor = 'cor-alerta alerta-frio'
@@ -373,14 +385,11 @@ function transformarEmDiv({ idLocal, valor, grauDeAviso, grauDeAvisoCor }) {
     } else if (descricao == 'Horta') {
         tipoDado = 'Luminosidade';
         unidadeMedida = 'Lux';
-        if (idLocal > 1) {
-            idLocal -= 1;
-        }
+        idLocal -= 1;
     }
 
-
     return `
-    <div class="mensagem-alarme" style="background-color: ${Bakgroundcolor}">
+    <div class="mensagem-alarme" style="background-color: ${descricao == 'Tanque' ? corFundoTanque : corFundoHorta}">
         <div class="informacao">
             <div class="${grauDeAvisoCor}">&#12644;</div> 
             <h3>${descricao} ${idLocal} está em estado de ${grauDeAviso}!</h3>

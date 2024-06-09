@@ -176,19 +176,19 @@ body {
 }
 
 .perigo-frio {
-    background-color: #5c6bc0;
+    background-color: #0d7494;
 }
 
 .perigo-quente {
-    background-color: #ff7043;
+    background-color: #f75959;
 }
 
 .alerta-frio {
-    background-color: #42a5f5;
+    background-color: #54b0fc;
 }
 
 .alerta-quente {
-    background-color: #ffee58;
+    background-color: #eba91c;
 }
 
 .ideal {
@@ -196,7 +196,7 @@ body {
 }
 
 .mensagem-alarme {
-    /* background-color: #FFF; */
+    color: #FFF;
     border-radius: 5px;
     width: 350px;
     height: 120px;
